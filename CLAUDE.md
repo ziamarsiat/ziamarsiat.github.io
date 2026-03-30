@@ -1,5 +1,8 @@
 # Instructions projet
 
+## Contexte
+L'utilisatrice n'est pas technique. Expliquer les choses simplement et éviter le jargon.
+
 ## Langue
 Toujours répondre en français.
 
