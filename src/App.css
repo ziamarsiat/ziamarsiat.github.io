@@ -1,65 +1,42 @@
-.portfolio {
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-}
-
-.header {
-  padding: 24px 40px;
-}
-
-.header nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
 }
 
 .logo {
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--text-h);
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-.hero {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 40px 20px;
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.hero h1 {
-  font-size: clamp(48px, 10vw, 96px);
-  font-weight: 300;
-  letter-spacing: 8px;
-  text-transform: uppercase;
-  margin: 0;
-  color: var(--text-h);
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
 }
 
-.subtitle {
-  font-size: clamp(16px, 3vw, 22px);
-  letter-spacing: 6px;
-  text-transform: uppercase;
-  margin-top: 16px;
-  color: var(--accent);
+.card {
+  padding: 2em;
 }
 
-.tagline {
-  margin-top: 32px;
-  font-size: 18px;
-  max-width: 480px;
-  line-height: 1.6;
-}
-
-.footer {
-  padding: 24px 40px;
-  text-align: center;
-  font-size: 14px;
-  color: var(--text);
-  border-top: 1px solid var(--border);
+.read-the-docs {
+  color: #888;
 }
