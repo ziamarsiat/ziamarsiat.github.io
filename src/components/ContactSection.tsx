@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const ContactSection = () => {
   return (
-    <section className="py-24 px-6">
+    <section id="contact" className="min-h-screen flex flex-col justify-center py-24 px-6 snap-start">
       <div className="max-w-2xl mx-auto text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

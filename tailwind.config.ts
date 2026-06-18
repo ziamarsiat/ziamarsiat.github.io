@@ -13,8 +13,8 @@ export default {
       },
     },
     fontFamily: {
-      heading: ['DM Serif Display', 'serif'],
-      body: ['Source Sans 3', 'sans-serif'],
+      heading: ['Fraunces', 'serif'],
+      body: ['Lato', 'sans-serif'],
     },
     extend: {
       colors: {

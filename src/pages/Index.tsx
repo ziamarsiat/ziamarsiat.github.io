@@ -1,14 +1,14 @@
 import HeroSection from "@/components/HeroSection";
 import AgesSection from "@/components/AgesSection";
 import ContactSection from "@/components/ContactSection";
-import paperTexture from "@/assets/paper-texture-2.png.asset.json";
+import paperTexture from "@/assets/paper-texture-2.png";
 
 const Index = () => {
   return (
     <main
       className="min-h-screen font-body"
       style={{
-        backgroundImage: `url(${paperTexture.url})`,
+        backgroundImage: `url(${paperTexture})`,
         backgroundRepeat: "repeat",
         backgroundSize: "600px auto",
       }}

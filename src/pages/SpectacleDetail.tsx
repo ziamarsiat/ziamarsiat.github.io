@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ImageIcon } from "lucide-react";
-import paperTexture from "@/assets/paper-texture-2.png.asset.json";
+import paperTexture from "@/assets/paper-texture-2.png";
 
 const spectacles: Record<string, { title: string; audience: string; description: string }> = {
   "tours-de-contes": {
@@ -37,7 +37,7 @@ const SpectacleDetail = () => {
     <main
       className="min-h-screen font-body"
       style={{
-        backgroundImage: `url(${paperTexture.url})`,
+        backgroundImage: `url(${paperTexture})`,
         backgroundRepeat: "repeat",
         backgroundSize: "600px auto",
       }}

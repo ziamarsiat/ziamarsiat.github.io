@@ -14,7 +14,7 @@ const AgesSection = () => {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
-    <section className="py-24 px-6">
+    <section id="propose" className="min-h-screen flex flex-col justify-center py-24 px-6 snap-start">
       <div className="max-w-4xl mx-auto text-center border-2 border-primary/30 rounded-3xl p-8 md:p-12 shadow-sm">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

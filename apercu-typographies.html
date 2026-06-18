@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aperçu des typographies — Zia Marsiat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;600&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Nunito+Sans:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&family=Spectral:ital,wght@0,400;0,600;1,400&family=Work+Sans:wght@300;400;600&family=Marcellus&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --background: hsl(40 33% 96%);
+      --card: hsl(40 30% 93%);
+      --foreground: hsl(20 20% 20%);
+      --muted-foreground: hsl(20 10% 50%);
+      --terracotta: hsl(14 60% 55%);
+      --sage: hsl(150 20% 45%);
+      --border: hsl(30 20% 85%);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--background);
+      color: var(--foreground);
+      font-family: 'Source Sans 3', sans-serif;
+      line-height: 1.5;
+      padding: 48px 24px 96px;
+    }
+    .page-header {
+      max-width: 880px;
+      margin: 0 auto 56px;
+      text-align: center;
+    }
+    .page-header h1 {
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 12px;
+    }
+    .page-header p {
+      color: var(--muted-foreground);
+      font-size: 16px;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .grid {
+      max-width: 880px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px 44px 44px;
+    }
+    .card .tag {
+      display: inline-block;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      background: hsl(14 60% 55% / 0.1);
+      padding: 5px 14px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+    .card .fonts {
+      font-size: 13px;
+      color: var(--muted-foreground);
+      margin-bottom: 28px;
+    }
+    .name {
+      font-size: clamp(48px, 9vw, 88px);
+      font-weight: 600;
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      margin-bottom: 18px;
+    }
+    .subtitle {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 30px;
+    }
+    .section-title {
+      font-size: 30px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .body-text {
+      font-size: 18px;
+      line-height: 1.65;
+      color: var(--foreground);
+      max-width: 60ch;
+    }
+    .body-text em { color: var(--muted-foreground); }
+    hr.sep { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
+
+    /* ---- Proposition 1 : Élégance littéraire ---- */
+    .p1 .name, .p1 .section-title { font-family: 'Cormorant Garamond', serif; }
+    .p1 .body-text { font-family: 'Source Sans 3', sans-serif; }
+
+    /* ---- Proposition 2 : Naturel & chaleureux ---- */
+    .p2 .name, .p2 .section-title { font-family: 'Fraunces', serif; }
+    .p2 .body-text { font-family: 'Nunito Sans', sans-serif; }
+
+    /* ---- Proposition 3 : Caractère & théâtre ---- */
+    .p3 .name, .p3 .section-title { font-family: 'Playfair Display', serif; }
+    .p3 .body-text { font-family: 'Lato', sans-serif; }
+
+    /* ---- Proposition 4 : Moderne organique ---- */
+    .p4 .name, .p4 .section-title { font-family: 'Spectral', serif; }
+    .p4 .body-text { font-family: 'Work Sans', sans-serif; }
+
+    /* ---- Proposition 5 : Conte & poésie ---- */
+    .p5 .name, .p5 .section-title { font-family: 'Marcellus', serif; }
+    .p5 .body-text { font-family: 'EB Garamond', serif; }
+  </style>
+</head>
+<body>
+  <div class="page-header">
+    <h1>Aperçu des typographies</h1>
+    <p>Cinq ambiances pour ton site. Compare le nom, les sous-titres et le corps de texte, puis dis-moi le numéro qui te plaît.</p>
+  </div>
+
+  <div class="grid">
+
+    <div class="card p1">
+      <span class="tag">Proposition 1 · Élégance littéraire</span>
+      <p class="fonts">Titres : Cormorant Garamond — Corps : Source Sans 3</p>
+      <div class="name">Zia <em style="font-style:normal">Marsiat</em></div>
+      <p class="subtitle">Actrice-conteuse · Interprète nature · Plasticienne</p>
+      <hr class="sep" />
+      <h2 class="section-title">Récits &amp; Musique</h2>
+      <p class="body-text">Au croisement du conte, du théâtre et du chant, Zia tisse des récits où la nature devient personnage. Chaque spectacle invite à ralentir, écouter le vivant et retrouver le goût des histoires partagées.</p>
+    </div>
+
+    <div class="card p2">
+      <span class="tag">Proposition 2 · Naturel &amp; chaleureux</span>
+      <p class="fonts">Titres : Fraunces — Corps : Nunito Sans</p>
+      <div class="name">Zia <em style="font-style:normal">Marsiat</em></div>
+      <p class="subtitle">Actrice-conteuse · Interprète nature · Plasticienne</p>
+      <hr class="sep" />
+      <h2 class="section-title">Récits &amp; Musique</h2>
+      <p class="body-text">Au croisement du conte, du théâtre et du chant, Zia tisse des récits où la nature devient personnage. Chaque spectacle invite à ralentir, écouter le vivant et retrouver le goût des histoires partagées.</p>
+    </div>
+
+    <div class="card p3">
+      <span class="tag">Proposition 3 · Caractère &amp; théâtre</span>
+      <p class="fonts">Titres : Playfair Display — Corps : Lato</p>
+      <div class="name">Zia <em style="font-style:normal">Marsiat</em></div>
+      <p class="subtitle">Actrice-conteuse · Interprète nature · Plasticienne</p>
+      <hr class="sep" />
+      <h2 class="section-title">Récits &amp; Musique</h2>
+      <p class="body-text">Au croisement du conte, du théâtre et du chant, Zia tisse des récits où la nature devient personnage. Chaque spectacle invite à ralentir, écouter le vivant et retrouver le goût des histoires partagées.</p>
+    </div>
+
+    <div class="card p4">
+      <span class="tag">Proposition 4 · Moderne organique</span>
+      <p class="fonts">Titres : Spectral — Corps : Work Sans</p>
+      <div class="name">Zia <em style="font-style:normal">Marsiat</em></div>
+      <p class="subtitle">Actrice-conteuse · Interprète nature · Plasticienne</p>
+      <hr class="sep" />
+      <h2 class="section-title">Récits &amp; Musique</h2>
+      <p class="body-text">Au croisement du conte, du théâtre et du chant, Zia tisse des récits où la nature devient personnage. Chaque spectacle invite à ralentir, écouter le vivant et retrouver le goût des histoires partagées.</p>
+    </div>
+
+    <div class="card p5">
+      <span class="tag">Proposition 5 · Conte &amp; poésie</span>
+      <p class="fonts">Titres : Marcellus — Corps : EB Garamond</p>
+      <div class="name">Zia <em style="font-style:normal">Marsiat</em></div>
+      <p class="subtitle">Actrice-conteuse · Interprète nature · Plasticienne</p>
+      <hr class="sep" />
+      <h2 class="section-title">Récits &amp; Musique</h2>
+      <p class="body-text">Au croisement du conte, du théâtre et du chant, Zia tisse des récits où la nature devient personnage. Chaque spectacle invite à ralentir, écouter le vivant et retrouver le goût des histoires partagées.</p>
+    </div>
+
+  </div>
+</body>
+</html>

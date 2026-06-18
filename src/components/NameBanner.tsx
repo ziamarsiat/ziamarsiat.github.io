@@ -1,4 +1,4 @@
-import feuillageBanner from "@/assets/feuillage-banner.jpg.asset.json";
+import feuillageBanner from "@/assets/feuillage-banner.jpg";
 
 const NameBanner = () => {
   return (
@@ -7,12 +7,12 @@ const NameBanner = () => {
       aria-label="Zia Marsiat"
     >
       <img
-        src={feuillageBanner.url}
+        src={feuillageBanner}
         alt=""
         className="absolute inset-0 w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-black/20" />
-      <h2 className="relative font-heading text-white/30 text-5xl md:text-8xl lg:text-9xl font-bold tracking-[-0.04em] text-center px-6 mix-blend-overlay leading-none">
+      <h2 className="relative font-heading text-white/30 text-5xl md:text-8xl lg:text-9xl font-bold tracking-tight text-center px-6 pr-8 mix-blend-overlay leading-none">
         Zia <em className="not-italic">Marsiat</em>
       </h2>
       <p className="relative font-body text-[10px] md:text-xs uppercase tracking-[0.35em] text-[#7a6b5c]">

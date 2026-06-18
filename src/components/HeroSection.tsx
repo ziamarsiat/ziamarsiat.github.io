@@ -2,12 +2,11 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Flower2, Palette, Music } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroBg from "@/assets/hero-bg.jpg";
-import ziaPortrait from "@/assets/zia-portrait.png";
+import paysagePrairie from "@/assets/paysage-prairie.jpg";
+import collageCurieuse from "@/assets/collage-curieuse.png";
 import ziaArtPlastique from "@/assets/zia-art-plastique.jpg";
 import ziaRecitsMusique from "@/assets/zia-recits-musique.jpg";
 import ziaSciencesNaturelles from "@/assets/zia-sciences-naturelles.jpg";
-import feuillageBanner from "@/assets/feuillage-banner.jpg.asset.json";
 
 const disciplines = [
   {
@@ -49,60 +48,80 @@ const HeroSection = () => {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0">
-        <img src={heroBg} alt="" className="w-full h-full object-cover opacity-30" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/20 to-background/80" />
-      </div>
-      
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center py-32">
-        <motion.img
-          src={ziaPortrait}
-          alt="Portrait de Zia Marsiat"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="mx-auto mb-6 h-72 md:h-96 lg:h-[32rem] w-auto object-contain"
+    <>
+      {/* Accueil plein écran — inspiration Grand Matin */}
+      <section id="accueil" className="relative h-screen min-h-[600px] w-full overflow-hidden snap-start">
+        <img
+          src={paysagePrairie}
+          alt="Prairie au coucher de soleil"
+          className="absolute inset-0 w-full h-full object-cover"
         />
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-sm font-body uppercase tracking-[0.3em] text-muted-foreground mb-6"
-        >
-          Actrice-conteuse · Interprète nature · Plasticienne
-        </motion.p>
-        
-        <motion.h1 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-2 w-fit mx-auto"
-        >
-          <span
-            className="font-heading text-7xl md:text-8xl lg:text-9xl font-bold tracking-[-0.04em] bg-clip-text text-transparent block leading-none"
-            style={{
-              backgroundImage: `url(${feuillageBanner.url})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
+        {/* Léger voile pour la lisibilité du texte */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/5 to-black/50" />
+
+        {/* Nom + rôle, au centre */}
+        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-sm md:text-base font-body uppercase tracking-[0.3em] text-white/90 mb-4 drop-shadow-[0_1px_8px_rgba(0,0,0,0.6)]"
+          >
+            Actrice-conteuse · Interprète nature · Plasticienne
+          </motion.p>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="font-heading text-7xl md:text-8xl lg:text-9xl font-bold tracking-[0.06em] leading-none text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.55)]"
           >
             <span className="not-italic">Zia</span>
             <span className="mx-2 md:mx-4"></span>
             <span className="italic">Marsiat</span>
-          </span>
-        </motion.h1>
-        
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="font-body text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto"
-        >
-          Je suis une curieuse. J'aime apprendre et essayer de nouvelles choses. 
-          Ce trait de caractère m'a menée à emprunter de nombreux sentiers.
-        </motion.p>
+          </motion.h1>
+        </div>
 
+        {/* Coordonnées en bas à droite */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="absolute bottom-6 right-6 z-10 text-right font-body text-lg md:text-2xl text-white/90 drop-shadow-[0_1px_6px_rgba(0,0,0,0.7)]"
+        >
+          <a href="mailto:ziamarsiat@gmail.com" className="block hover:underline">
+            ziamarsiat@gmail.com
+          </a>
+          <a href="tel:+32484784274" className="block hover:underline mt-1">
+            0032 484 78 42 74
+          </a>
+        </motion.div>
+      </section>
+
+      {/* Présentation — Je suis une curieuse */}
+      <section id="presentation" className="relative h-screen min-h-[600px] w-full overflow-hidden snap-start bg-[#e5dbc8]">
+        <img
+          src={collageCurieuse}
+          alt="Zia entourée d'un écureuil, d'oiseaux, d'un crayon et d'un violoncelle"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        {/* Dégradé sombre en bas pour la lisibilité du texte */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="absolute bottom-0 left-0 right-0 z-10 px-6 pb-16 md:pb-24 text-center font-body text-xl md:text-3xl leading-relaxed text-white max-w-3xl mx-auto drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)]"
+        >
+          Je suis curieuse. J'aime apprendre et essayer de nouvelles choses. Ce trait de caractère m'a menée à emprunter de nombreux sentiers.
+        </motion.p>
+      </section>
+
+      {/* Disciplines */}
+      <section id="disciplines" className="relative py-20 px-6 snap-start">
+        <div className="max-w-4xl mx-auto">
           {/* Onglets disciplines */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -156,13 +175,13 @@ const HeroSection = () => {
                         <img
                           src={ziaRecitsMusique}
                           alt="Zia jouant du violoncelle"
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-cover object-[center_18%]"
                         />
                       ) : d.title === "Sciences naturelles" ? (
                         <img
                           src={ziaSciencesNaturelles}
                           alt="Zia dans la nature"
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-cover object-[center_72%] scale-125"
                         />
                       ) : (
                         <span className={`font-heading text-4xl font-bold ${d.color}`}>
@@ -172,7 +191,7 @@ const HeroSection = () => {
                     </div>
                   </div>
 
-                  <span className={`font-heading text-sm md:text-base font-bold text-center leading-tight mt-4 w-44 md:w-52 ${d.color}`}>
+                  <span className="font-heading text-lg md:text-xl font-bold text-center leading-tight mt-4 w-44 md:w-52 text-primary">
                     {d.title}
                   </span>
                 </Link>
@@ -200,8 +219,9 @@ const HeroSection = () => {
             </AnimatePresence>
           </div>
         </motion.div>
-      </div>
-    </section>
+        </div>
+      </section>
+    </>
   );
 };
 

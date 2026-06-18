@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Palette, ArrowLeft, ImageIcon } from "lucide-react";
-import paperTexture from "@/assets/paper-texture-2.png.asset.json";
+import paperTexture from "@/assets/paper-texture-2.png";
 
 const items = [
   { title: "Future titre", subtitle: "À venir" },
@@ -15,7 +15,7 @@ const ArtPlastique = () => {
     <main
       className="min-h-screen font-body"
       style={{
-        backgroundImage: `url(${paperTexture.url})`,
+        backgroundImage: `url(${paperTexture})`,
         backgroundRepeat: "repeat",
         backgroundSize: "600px auto",
       }}
