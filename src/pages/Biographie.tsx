@@ -57,17 +57,12 @@ const Biographie = () => {
           Retour
         </Link>
 
-        <div className="flex items-center gap-3 mb-4">
+        <div className="flex items-center gap-3 mb-16">
           <BookOpen className="w-8 h-8 text-primary" />
           <h1 className="font-heading text-4xl md:text-5xl text-foreground">
-            Un chemin de <em className="text-primary">curiosité</em>
+            <em className="text-primary">Biographie</em>
           </h1>
         </div>
-
-        <p className="font-body text-lg text-muted-foreground leading-relaxed max-w-2xl mb-16">
-          Aujourd'hui, tout se rejoint, tout s'entrecroise. Je suis plasticienne, actrice-conteuse, 
-          musicienne, interprète nature et environnement. Cette pluralité fait partie de moi.
-        </p>
 
         <div className="relative">
           <div className="absolute left-1/2 top-0 bottom-0 w-px bg-border hidden md:block" />
