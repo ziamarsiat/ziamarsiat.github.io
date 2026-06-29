@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Fichiers de travail temporaires (captures, aperçus) — pas dans la sauvegarde
+screenshots
+apercu-typographies.html
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
