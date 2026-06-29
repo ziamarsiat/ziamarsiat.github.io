@@ -4,9 +4,9 @@ import { Flower2, Palette, Music } from "lucide-react";
 import { Link } from "react-router-dom";
 import paysagePrairie from "@/assets/paysage-prairie.jpg";
 import collageCurieuse from "@/assets/collage-curieuse.png";
-import ziaArtPlastique from "@/assets/zia-art-plastique.jpg";
-import ziaRecitsMusique from "@/assets/zia-recits-musique.jpg";
-import ziaSciencesNaturelles from "@/assets/zia-sciences-naturelles.jpg";
+import fleurArtPlastique from "@/assets/fleur-art-plastique.jpg";
+import fleurRecitsMusique from "@/assets/fleur-recits-musique.jpg";
+import fleurSciencesNaturelles from "@/assets/fleur-sciences.jpg";
 
 const disciplines = [
   {
@@ -167,21 +167,21 @@ const HeroSection = () => {
                     >
                       {d.title === "Art plastique" ? (
                         <img
-                          src={ziaArtPlastique}
-                          alt="Zia avec un pinceau"
+                          src={fleurArtPlastique}
+                          alt="Pivoine rose"
                           className="w-full h-full object-cover"
                         />
                       ) : d.title === "Récits & musique" ? (
                         <img
-                          src={ziaRecitsMusique}
-                          alt="Zia jouant du violoncelle"
-                          className="w-full h-full object-cover object-[center_18%]"
+                          src={fleurRecitsMusique}
+                          alt="Pivoine rouge"
+                          className="w-full h-full object-cover"
                         />
                       ) : d.title === "Sciences naturelles" ? (
                         <img
-                          src={ziaSciencesNaturelles}
-                          alt="Zia dans la nature"
-                          className="w-full h-full object-cover object-[center_72%] scale-125"
+                          src={fleurSciencesNaturelles}
+                          alt="Fleur corail"
+                          className="w-full h-full object-cover"
                         />
                       ) : (
                         <span className={`font-heading text-4xl font-bold ${d.color}`}>

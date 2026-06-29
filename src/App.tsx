@@ -9,6 +9,7 @@ import SpectacleDetail from "./pages/SpectacleDetail.tsx";
 import SciencesNaturelles from "./pages/SciencesNaturelles.tsx";
 import ArtPlastique from "./pages/ArtPlastique.tsx";
 import Biographie from "./pages/Biographie.tsx";
+import UniversDetail from "./pages/UniversDetail.tsx";
 import Contact from "./pages/Contact.tsx";
 import LettreInformation from "./pages/LettreInformation.tsx";
 import Agenda from "./pages/Agenda.tsx";
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/sciences-naturelles" element={<SciencesNaturelles />} />
           <Route path="/art-plastique" element={<ArtPlastique />} />
           <Route path="/biographie" element={<Biographie />} />
+          <Route path="/univers/:slug" element={<UniversDetail />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/lettre-information" element={<LettreInformation />} />
           <Route path="/agenda" element={<Agenda />} />

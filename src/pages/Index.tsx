@@ -6,9 +6,8 @@ import Navbar from "@/components/Navbar";
 import paperTexture from "@/assets/paper-texture-2.png";
 import paysagePrairie from "@/assets/paysage-prairie.jpg";
 import collageCurieuse from "@/assets/collage-curieuse.png";
-import ziaRecitsMusique from "@/assets/zia-recits-musique.jpg";
-import ziaSciencesNaturelles from "@/assets/zia-sciences-naturelles.jpg";
-import ziaArtPlastique from "@/assets/zia-art-plastique.jpg";
+import parcoursForet from "@/assets/parcours-foret.jpg";
+import { univers } from "@/data/univers";
 
 // ─────────────────────────────────────────────────────────────
 //  AGENDA — vos dates
@@ -20,42 +19,6 @@ const evenements = [
   { date: "3 octobre 2026", titre: "Balade musicale en forêt", lieu: "Forêt de Soignes", lien: "https://maps.google.com/?q=Forêt+de+Soignes" },
   { date: "22 novembre 2026", titre: "Atelier création nature", lieu: "Centre culturel de Wavre", lien: "https://www.ccwavre.be" },
   { date: "13 décembre 2026", titre: "Récital de Noël", lieu: "Église Saint-Loup, Namur", lien: "" },
-];
-
-// Les trois univers
-const univers = [
-  {
-    id: "actrice-conteuse",
-    title: "Actrice-conteuse",
-    image: ziaRecitsMusique,
-    alt: "Zia jouant du violoncelle",
-    position: "center 25%",
-    text: "Raconter, c'est créer un petit bout de rêve à partager. Les histoires prennent vie par le chant et le violoncelle.",
-    items: [
-      "Tours de contes — Tout public",
-      "Histoires d'un jardin d'été — 6 mois et +",
-      "Tout se transforme — 6 ans et +",
-      "Cabane magique — Espace nomade",
-    ],
-  },
-  {
-    id: "interprete-nature",
-    title: "Interprète Nature",
-    image: ziaSciencesNaturelles,
-    alt: "Zia tenant une branche de glycine",
-    position: "center 45%",
-    text: "Pourquoi les choses sont-elles comme elles sont ? Entre savoir et magie, il y a l'émerveillement. À la découverte des vivants qui nous entourent : des ateliers pour tous les âges, basés sur une pédagogie de l'expérimentation.",
-    items: [],
-  },
-  {
-    id: "plasticienne",
-    title: "Plasticienne",
-    image: ziaArtPlastique,
-    alt: "Zia créant avec un pinceau",
-    position: "center 30%",
-    text: "Nos yeux voient, nos corps sentent et entendent. Je crée avec mes sens pour partager des sensations.",
-    items: [],
-  },
 ];
 
 const fadeUp = {
@@ -102,33 +65,33 @@ const Index = () => {
           style={{ backgroundImage: `url(${paperTexture})`, backgroundRepeat: "repeat", backgroundSize: "600px auto" }}
         >
           {/* ── 2. QUI SUIS-JE ── */}
-          <section id="qui-suis-je" className="py-24 md:py-32">
-            <div className="max-w-3xl mx-auto px-6 text-center mb-12 md:mb-16">
-              <motion.h2 {...fadeUp} className="font-heading text-4xl md:text-5xl mb-8">
-                Qui <em className="text-primary">suis-je</em> ?
-              </motion.h2>
-              <motion.p {...fadeUp} className="text-lg md:text-xl leading-relaxed text-muted-foreground">
-                Je suis curieuse. J'aime apprendre et essayer de nouvelles choses. Ce trait de caractère m'a menée à
-                emprunter de nombreux sentiers.
-              </motion.p>
-            </div>
+          <section id="qui-suis-je" className="pt-24 md:pt-32">
             <motion.img
               {...fadeUp}
               src={collageCurieuse}
               alt="Zia entourée d'un écureuil, d'oiseaux, d'un crayon et d'un violoncelle"
               className="w-full h-[60vh] md:h-[80vh] object-cover"
             />
+            {/* Bandeau blanc sous l'image avec le titre et le texte */}
+            <div className="bg-white px-6 py-14 md:py-20">
+              <div className="max-w-3xl mx-auto text-center">
+                <motion.h2 {...fadeUp} className="font-heading text-4xl md:text-5xl mb-6">
+                  Qui <em className="text-primary">suis-je</em> ?
+                </motion.h2>
+                <motion.p {...fadeUp} className="text-lg md:text-xl leading-relaxed text-muted-foreground">
+                  Je suis curieuse. J'aime apprendre et essayer de nouvelles choses. Ce trait de caractère m'a menée à
+                  emprunter de nombreux sentiers.
+                </motion.p>
+              </div>
+            </div>
           </section>
 
           {/* ── 3. AGENDA ── */}
           <section id="agenda" className="py-24 md:py-32 px-6">
             <div className="max-w-3xl mx-auto">
-              <motion.h2 {...fadeUp} className="font-heading text-4xl md:text-5xl text-center mb-6">
+              <motion.h2 {...fadeUp} className="font-heading text-4xl md:text-5xl text-center mb-12">
                 <em className="text-primary">Agenda</em>
               </motion.h2>
-              <motion.p {...fadeUp} className="text-center text-lg text-muted-foreground mb-12">
-                Retrouvez ici mes prochaines dates de spectacles, ateliers et rencontres.
-              </motion.p>
               <motion.div {...fadeUp} className="overflow-x-auto border border-border rounded-xl bg-background/60">
                 <table className="w-full border-collapse text-left">
                   <thead>
@@ -163,29 +126,37 @@ const Index = () => {
           {/* ── 4·5·6. LES TROIS UNIVERS ── */}
           {univers.map((u) => (
             <section key={u.id} id={u.id} className="relative h-[60vh] md:h-[85vh] w-full overflow-hidden">
-              <img
-                src={u.image}
-                alt={u.alt}
-                style={{ objectPosition: u.position }}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-black/30" />
-              <motion.h2
-                {...fadeUp}
-                className="absolute inset-0 flex items-center justify-center text-center px-6 font-heading text-4xl md:text-6xl font-bold text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.6)]"
-              >
-                {u.title}
-              </motion.h2>
+              <Link to={`/univers/${u.id}`} className="group block w-full h-full">
+                <img
+                  src={u.image}
+                  alt={u.alt}
+                  style={{ objectPosition: u.position }}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black/30 transition-colors duration-300 group-hover:bg-black/45" />
+                <motion.h2
+                  {...fadeUp}
+                  className="absolute inset-0 flex items-center justify-center text-center px-6 font-heading text-4xl md:text-6xl font-bold text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.6)]"
+                >
+                  {u.title}
+                </motion.h2>
+              </Link>
             </section>
           ))}
 
           {/* ── 7. PARCOURS ── */}
-          <section id="parcours" className="py-24 md:py-32 px-6">
-            <div className="max-w-3xl mx-auto">
-              <motion.h2 {...fadeUp} className="font-heading text-4xl md:text-5xl text-center mb-6">
+          <section id="parcours" className="relative py-24 md:py-32 px-6 overflow-hidden">
+            <img
+              src={parcoursForet}
+              alt="Sentier en forêt"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+
+            <div className="relative z-10 max-w-3xl mx-auto">
+              <motion.h2 {...fadeUp} className="font-heading text-4xl md:text-5xl text-center mb-6 text-white [text-shadow:0_2px_10px_rgba(0,0,0,0.95),0_0_4px_rgba(0,0,0,0.8)]">
                 Un chemin de <em className="text-primary">curiosité</em>
               </motion.h2>
-              <motion.p {...fadeUp} className="text-center text-lg text-muted-foreground mb-16 max-w-2xl mx-auto">
+              <motion.p {...fadeUp} className="text-center text-lg text-white mb-16 max-w-2xl mx-auto [text-shadow:0_2px_8px_rgba(0,0,0,0.95),0_0_4px_rgba(0,0,0,0.8)]">
                 Je suis curieuse. J'aime apprendre et expérimenter. Ces traits de caractère m'ont menée à emprunter de
                 nombreux sentiers. Aujourd'hui, tout se rejoint, tout s'entrecroise. Et je souhaite continuer à tisser
                 tout cela encore longtemps !
