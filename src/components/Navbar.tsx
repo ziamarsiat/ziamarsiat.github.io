@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import papillon from "@/assets/papillon.png";
 
 const links = [
   { label: "Accueil", href: "#accueil" },
@@ -41,9 +42,10 @@ const Navbar = () => {
           <a
             href="#accueil"
             onClick={() => setOpen(false)}
-            className={`font-heading text-xl md:text-2xl font-bold transition-colors ${textColor}`}
+            className="flex items-center"
+            aria-label="Zia Marsiat — Accueil"
           >
-            Zia <span className="italic text-primary">Marsiat</span>
+            <img src={papillon} alt="Zia Marsiat" className="h-12 md:h-14 w-auto object-contain" />
           </a>
 
           {/* Bouton à deux barres qui se croisent en croix */}

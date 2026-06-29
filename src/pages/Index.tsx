@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
-import { Mail, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 
 import paperTexture from "@/assets/paper-texture-2.png";
 import paysagePrairie from "@/assets/paysage-prairie.jpg";
 import collageCurieuse from "@/assets/collage-curieuse.png";
-import parcoursForet from "@/assets/parcours-foret.jpg";
+import parcoursBoussole from "@/assets/parcours-boussole.png";
+import troisDisciplines from "@/assets/trois-disciplines.png";
+import contactImg from "@/assets/contact.png";
 import { univers } from "@/data/univers";
 
 // ─────────────────────────────────────────────────────────────
@@ -123,46 +124,39 @@ const Index = () => {
             </div>
           </section>
 
-          {/* ── 4·5·6. LES TROIS UNIVERS ── */}
-          {univers.map((u) => (
-            <section key={u.id} id={u.id} className="relative h-[60vh] md:h-[85vh] w-full overflow-hidden">
-              <Link to={`/univers/${u.id}`} className="group block w-full h-full">
-                <img
-                  src={u.image}
-                  alt={u.alt}
-                  style={{ objectPosition: u.position }}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-black/30 transition-colors duration-300 group-hover:bg-black/45" />
-                <motion.h2
-                  {...fadeUp}
-                  className="absolute inset-0 flex items-center justify-center text-center px-6 font-heading text-4xl md:text-6xl font-bold text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.6)]"
+          {/* ── 4·5·6. LES TROIS UNIVERS (une seule image en fond) ── */}
+          <div className="relative w-full">
+            <img src={troisDisciplines} alt="Oiseaux dans le ciel" className="block w-full h-auto" />
+            <div className="absolute inset-0 flex flex-col">
+              {univers.map((u) => (
+                <Link
+                  key={u.id}
+                  id={u.id}
+                  to={`/univers/${u.id}`}
+                  className="group relative flex-1 flex items-center justify-center text-center px-6"
                 >
-                  {u.title}
-                </motion.h2>
-              </Link>
-            </section>
-          ))}
+                  <h2 className="relative font-heading text-4xl md:text-6xl font-bold text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.7)] transition-transform duration-300 group-hover:scale-110">
+                    {u.title}
+                  </h2>
+                </Link>
+              ))}
+            </div>
+          </div>
 
           {/* ── 7. PARCOURS ── */}
-          <section id="parcours" className="relative py-24 md:py-32 px-6 overflow-hidden">
+          <section id="parcours" className="relative min-h-[60vh] md:min-h-[70vh] flex items-center py-20 px-6 overflow-hidden">
             <img
-              src={parcoursForet}
-              alt="Sentier en forêt"
+              src={parcoursBoussole}
+              alt="Une main tenant une boussole devant un paysage de montagnes"
               className="absolute inset-0 w-full h-full object-cover"
             />
 
-            <div className="relative z-10 max-w-3xl mx-auto">
-              <motion.h2 {...fadeUp} className="font-heading text-4xl md:text-5xl text-center mb-6 text-white [text-shadow:0_2px_10px_rgba(0,0,0,0.95),0_0_4px_rgba(0,0,0,0.8)]">
+            <div className="relative z-10 ml-auto max-w-md text-center">
+              <motion.h2 {...fadeUp} className="font-heading text-4xl md:text-5xl mb-10 text-white [text-shadow:0_2px_10px_rgba(0,0,0,0.95),0_0_4px_rgba(0,0,0,0.8)]">
                 Un chemin de <em className="text-primary">curiosité</em>
               </motion.h2>
-              <motion.p {...fadeUp} className="text-center text-lg text-white mb-16 max-w-2xl mx-auto [text-shadow:0_2px_8px_rgba(0,0,0,0.95),0_0_4px_rgba(0,0,0,0.8)]">
-                Je suis curieuse. J'aime apprendre et expérimenter. Ces traits de caractère m'ont menée à emprunter de
-                nombreux sentiers. Aujourd'hui, tout se rejoint, tout s'entrecroise. Et je souhaite continuer à tisser
-                tout cela encore longtemps !
-              </motion.p>
 
-              <motion.div {...fadeUp} className="text-center">
+              <motion.div {...fadeUp}>
                 <Link
                   to="/biographie"
                   className="inline-block font-body text-sm uppercase tracking-widest bg-primary text-primary-foreground px-8 py-4 rounded-full hover:bg-primary/90 transition-colors"
@@ -174,37 +168,36 @@ const Index = () => {
           </section>
 
           {/* ── 8. CONTACT ── */}
-          <section id="contact" className="py-24 md:py-32 px-6">
-            <div className="max-w-2xl mx-auto text-center">
-              <motion.h2 {...fadeUp} className="font-heading text-4xl md:text-5xl mb-4">
-                Tissons <em className="text-primary">ensemble</em>
+          <section id="contact" className="relative w-full overflow-hidden">
+            <img
+              src={contactImg}
+              alt="Une mésange apporte le courrier à une boîte aux lettres"
+              className="block w-full h-auto"
+            />
+            {/* Voile sombre en haut pour la lisibilité du texte */}
+            <div className="absolute inset-x-0 top-0 h-2/3 bg-gradient-to-b from-black/60 via-black/25 to-transparent" />
+            <div className="absolute inset-x-0 top-0 pt-16 md:pt-24 px-6 flex flex-col items-center text-center text-white">
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="font-heading text-4xl md:text-6xl font-bold mb-6 drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]"
+              >
+                Contact
               </motion.h2>
-              <motion.p {...fadeUp} className="text-lg text-muted-foreground mb-12">
-                Une envie de projet, une question ? N'hésitez pas à me contacter.
-              </motion.p>
-              <div className="space-y-5 text-left">
-                <motion.a
-                  {...fadeUp}
-                  href="mailto:ziamarsiat@gmail.com"
-                  className="flex items-center gap-4 bg-background/70 border border-border rounded-xl px-6 py-5 hover:border-primary/40 transition-colors"
-                >
-                  <Mail className="w-6 h-6 text-primary shrink-0" />
-                  <span className="text-lg">ziamarsiat@gmail.com</span>
-                </motion.a>
-                <motion.a
-                  {...fadeUp}
-                  href="https://wa.me/32484784274"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 bg-background/70 border border-border rounded-xl px-6 py-5 hover:border-primary/40 transition-colors"
-                >
-                  <Phone className="w-6 h-6 text-primary shrink-0" />
-                  <span>
-                    <span className="text-lg block">0032 484 78 42 74</span>
-                    <span className="text-muted-foreground text-sm">SMS ou WhatsApp</span>
-                  </span>
-                </motion.a>
-              </div>
+              <a
+                href="mailto:ziamarsiat@gmail.com"
+                className="text-lg md:text-2xl hover:underline drop-shadow-[0_1px_8px_rgba(0,0,0,0.9)] mb-3"
+              >
+                ziamarsiat@gmail.com
+              </a>
+              <a
+                href="tel:+32484784274"
+                className="text-lg md:text-2xl hover:underline drop-shadow-[0_1px_8px_rgba(0,0,0,0.9)]"
+              >
+                0032 484 78 42 74
+              </a>
             </div>
           </section>
 
