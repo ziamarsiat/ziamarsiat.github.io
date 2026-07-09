@@ -7,6 +7,7 @@ import histoiresVoyage from "@/assets/histoires-voyage-ete.png";
 import toutSeTransforme from "@/assets/tout-se-transforme.png";
 import rideauRouge from "@/assets/rideau-rouge.png";
 import grenouilleMare from "@/assets/grenouille-mare.png";
+import plasticienneBanner from "@/assets/plasticienne-banner.png";
 import nature1 from "@/assets/nature-1.jpg";
 import nature2 from "@/assets/nature-2.jpg";
 import nature3 from "@/assets/nature-3.jpg";
@@ -110,9 +111,9 @@ export const univers = [
     alt: "Pivoine rose",
     position: "center",
     text: "Nos yeux voient, nos corps sentent et entendent. Je crée avec mes sens pour partager des sensations.",
-    dark: false,
-    banner: "",
-    bannerPosition: "",
+    dark: true,
+    banner: plasticienneBanner,
+    bannerPosition: "center 45%",
     items: [],
     spectacles: [],
     gallery: [],
