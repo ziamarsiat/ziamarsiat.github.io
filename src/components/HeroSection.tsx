@@ -2,11 +2,11 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Flower2, Palette, Music } from "lucide-react";
 import { Link } from "react-router-dom";
-import paysagePrairie from "@/assets/paysage-prairie.jpg";
-import collageCurieuse from "@/assets/collage-curieuse.png";
-import fleurArtPlastique from "@/assets/fleur-art-plastique.jpg";
-import fleurRecitsMusique from "@/assets/fleur-recits-musique.jpg";
-import fleurSciencesNaturelles from "@/assets/fleur-sciences.jpg";
+import paysagePrairie from "@/assets/paysage-prairie.webp";
+import collageCurieuse from "@/assets/collage-curieuse.webp";
+import fleurArtPlastique from "@/assets/fleur-art-plastique.webp";
+import fleurRecitsMusique from "@/assets/fleur-recits-musique.webp";
+import fleurSciencesNaturelles from "@/assets/fleur-sciences.webp";
 
 const disciplines = [
   {

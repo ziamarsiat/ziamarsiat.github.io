@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ImageIcon } from "lucide-react";
-import paperTexture from "@/assets/paper-texture-2.png";
+import paperTexture from "@/assets/paper-texture-2.webp";
 
 const spectacles: Record<string, { title: string; audience: string; description: string }> = {
   "tours-de-contes": {

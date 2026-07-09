@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, ImageIcon, X } from "lucide-react";
-import paperTexture from "@/assets/paper-texture-2.png";
+import paperTexture from "@/assets/paper-texture-2.webp";
 import Navbar from "@/components/Navbar";
 import { univers } from "@/data/univers";
 

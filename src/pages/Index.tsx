@@ -5,13 +5,13 @@ import Navbar from "@/components/Navbar";
 import FeuFollet from "@/components/FeuFollet";
 import BullesSavon from "@/components/BullesSavon";
 
-import paperTexture from "@/assets/paper-texture-2.png";
-import accueilBg from "@/assets/accueil.png";
-import collageCurieuse from "@/assets/collage-curieuse.png";
-import parcoursBoussole from "@/assets/parcours-boussole.png";
-import troisDisciplines from "@/assets/trois-disciplines.png";
-import contactImg from "@/assets/contact.png";
-import agendaCiel from "@/assets/agenda-ciel.jpg";
+import paperTexture from "@/assets/paper-texture-2.webp";
+import accueilBg from "@/assets/accueil.webp";
+import collageCurieuse from "@/assets/collage-curieuse.webp";
+import parcoursBoussole from "@/assets/parcours-boussole.webp";
+import troisDisciplines from "@/assets/trois-disciplines.webp";
+import contactImg from "@/assets/contact.webp";
+import agendaCiel from "@/assets/agenda-ciel.webp";
 import { univers } from "@/data/univers";
 import { useAgenda } from "@/data/agenda";
 

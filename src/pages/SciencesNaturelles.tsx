@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { Flower2, ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
-import sciences1 from "@/assets/sciences-1.jpg";
-import sciences2 from "@/assets/sciences-2.jpg";
-import sciences3 from "@/assets/sciences-3.jpg";
+import sciences1 from "@/assets/sciences-1.webp";
+import sciences2 from "@/assets/sciences-2.webp";
+import sciences3 from "@/assets/sciences-3.webp";
 
 const SciencesNaturelles = () => {
   return (

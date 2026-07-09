@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Palette, ArrowLeft, ImageIcon } from "lucide-react";
-import paperTexture from "@/assets/paper-texture-2.png";
+import paperTexture from "@/assets/paper-texture-2.webp";
 
 const items = [
   { title: "Future titre", subtitle: "À venir" },

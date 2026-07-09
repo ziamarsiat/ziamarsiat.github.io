@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import papillon from "@/assets/papillon.png";
+import papillon from "@/assets/papillon.webp";
 
 const links = [
   { label: "Accueil", href: "/#accueil" },

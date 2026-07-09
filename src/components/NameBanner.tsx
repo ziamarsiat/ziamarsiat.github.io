@@ -1,4 +1,4 @@
-import feuillageBanner from "@/assets/feuillage-banner.jpg";
+import feuillageBanner from "@/assets/feuillage-banner.webp";
 
 const NameBanner = () => {
   return (
