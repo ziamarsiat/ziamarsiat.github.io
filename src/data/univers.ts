@@ -6,6 +6,9 @@ import sciences2 from "@/assets/sciences-2.jpg";
 import sciences3 from "@/assets/sciences-3.jpg";
 import cabaneMagique from "@/assets/cabane-magique.png";
 import toursDeContes from "@/assets/tours-de-contes.png";
+import histoiresVoyage from "@/assets/histoires-voyage-ete.png";
+import toutSeTransforme from "@/assets/tout-se-transforme.png";
+import rideauRouge from "@/assets/rideau-rouge.png";
 import cabane1 from "@/assets/cabane-1.jpg";
 import cabane2 from "@/assets/cabane-2.jpg";
 import cabane3 from "@/assets/cabane-3.jpg";
@@ -29,6 +32,9 @@ export const univers = [
     alt: "Pivoine rouge",
     position: "center",
     text: "Raconter, c'est créer un petit bout de rêve à partager. Les histoires prennent vie par le chant et le violoncelle.",
+    // Page à fond noir avec une bannière (rideau rouge) en haut.
+    dark: true,
+    banner: rideauRouge,
     items: [],
     // Les spectacles affichés en cadres. Ajoutez « image » plus tard pour une photo.
     spectacles: [
@@ -43,8 +49,29 @@ export const univers = [
         ],
         photos: [],
       },
-      { titre: "Histoires d'un jardin d'été", public: "6 mois +", image: "", slug: "histoires-d-un-jardin-d-ete", description: [], photos: [] },
-      { titre: "Tout se transforme", public: "6 ans +", image: "", slug: "tout-se-transforme", description: [], photos: [] },
+      {
+        titre: "Histoires d'un voyage d'été",
+        public: "6 mois +",
+        image: histoiresVoyage,
+        slug: "histoires-d-un-voyage-d-ete",
+        description: [
+          "Aujourd'hui, c'est décidé : Pixie part en voyage ! Bottes aux pieds et sac au dos, elle embarque dans le premier train pour la mer. Avec elle, plongez au cœur des flots et découvrez une ribambelle de personnages tendres et farfelu·es : un violoncelle marin, des vagues chantantes, un soleil superstar, une sirène à bulles et un monstre sympathique.",
+          "Ce spectacle fait la part belle au bonheur de créer des mondes et à la fantaisie de l'imaginaire. Une grande traversée pour les petit·es et les grand·es nageur·euses, à savourer en famille.",
+        ],
+        photos: [],
+      },
+      {
+        titre: "Tout se transforme",
+        public: "6 ans +",
+        image: toutSeTransforme,
+        slug: "tout-se-transforme",
+        description: [
+          "Spectacle en création.",
+          "Trois histoires, trois générations, et à chacune, la matière et les êtres se transforment. Au rythme des plantes qui poussent et des mains qui sculptent, les histoires se racontent.",
+          "Appelée par ma fascination pour ces histoires, j'explore leurs résonances et les remets à leur juste place : dans la vie, la mémoire vivante et collective.",
+        ],
+        photos: [],
+      },
       {
         titre: "Cabane magique",
         public: "Espace nomade",
@@ -67,6 +94,8 @@ export const univers = [
     alt: "Fleur corail",
     position: "center",
     text: "Pourquoi les choses sont-elles comme elles sont ? Entre savoir et magie, il y a l'émerveillement. À la découverte des vivants qui nous entourent : des ateliers pour tous les âges, basés sur une pédagogie de l'expérimentation.",
+    dark: false,
+    banner: "",
     items: [],
     spectacles: [],
     gallery: [sciences1, sciences2, sciences3],
@@ -78,6 +107,8 @@ export const univers = [
     alt: "Pivoine rose",
     position: "center",
     text: "Nos yeux voient, nos corps sentent et entendent. Je crée avec mes sens pour partager des sensations.",
+    dark: false,
+    banner: "",
     items: [],
     spectacles: [],
     gallery: [],

@@ -9,6 +9,8 @@ import { univers } from "@/data/univers";
 const UniversDetail = () => {
   const { slug } = useParams();
   const u = univers.find((x) => x.id === slug);
+  const dark = !!u?.dark;
+  const banner = u?.banner || "";
 
   // Toujours afficher la sous-page depuis le haut
   useEffect(() => {
@@ -17,15 +19,29 @@ const UniversDetail = () => {
 
   return (
     <main
-      className="min-h-screen font-body"
-      style={{ backgroundImage: `url(${paperTexture})`, backgroundRepeat: "repeat", backgroundSize: "600px auto" }}
+      className={`min-h-screen font-body ${dark ? "bg-black text-white" : ""}`}
+      style={
+        dark
+          ? undefined
+          : { backgroundImage: `url(${paperTexture})`, backgroundRepeat: "repeat", backgroundSize: "600px auto" }
+      }
     >
-      <Navbar solid />
-      <div className="max-w-4xl mx-auto px-6 pt-28 pb-16">
+      {dark ? <Navbar light /> : <Navbar solid />}
+
+      {/* Bannière en haut de page (ex. rideau rouge pour Actrice-conteuse) */}
+      {banner && (
+        <div className="w-full pt-16 md:pt-20">
+          <img src={banner} alt="" className="mx-auto block max-h-[75vh] w-auto max-w-full object-contain" />
+        </div>
+      )}
+
+      <div className={`max-w-4xl mx-auto px-6 pb-16 ${banner ? "pt-10" : "pt-28"}`}>
         {/* Retour vers le bloc d'où l'on vient sur la page d'accueil (ex. #actrice-conteuse) */}
         <a
           href={`/#${slug}`}
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-12"
+          className={`inline-flex items-center gap-2 text-sm transition-colors mb-12 ${
+            dark ? "text-white/70 hover:text-white" : "text-muted-foreground hover:text-foreground"
+          }`}
         >
           <ArrowLeft className="w-4 h-4" />
           Retour
@@ -44,17 +60,26 @@ const UniversDetail = () => {
               {u.title}
             </motion.h1>
 
-            <motion.img
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              src={u.image}
-              alt={u.alt}
-              style={{ objectPosition: u.position }}
-              className="w-full h-[45vh] md:h-[55vh] object-cover rounded-2xl shadow-md mb-10"
-            />
+            {/* L'image de l'univers (sauf si une bannière la remplace en haut) */}
+            {!banner && (
+              <motion.img
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                src={u.image}
+                alt={u.alt}
+                style={{ objectPosition: u.position }}
+                className="w-full h-[45vh] md:h-[55vh] object-cover rounded-2xl shadow-md mb-10"
+              />
+            )}
 
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-2xl">{u.text}</p>
+            <p
+              className={`text-lg leading-relaxed mb-8 max-w-2xl ${
+                dark ? "text-white/85" : "text-muted-foreground"
+              }`}
+            >
+              {u.text}
+            </p>
 
             {u.items.length > 0 && (
               <ul className="space-y-2 mb-10">
