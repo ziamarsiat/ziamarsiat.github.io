@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import FeuFollet from "@/components/FeuFollet";
+import BullesSavon from "@/components/BullesSavon";
 
 import paperTexture from "@/assets/paper-texture-2.png";
 import accueilBg from "@/assets/accueil.png";
@@ -160,6 +161,8 @@ const Index = () => {
                 </Link>
               ))}
             </div>
+            {/* Bulles de savon qui montent du bas (Plasticienne) vers le haut (Actrice-conteuse) */}
+            <BullesSavon />
           </div>
 
           {/* ── 7. PARCOURS ── */}
