@@ -139,7 +139,7 @@ const Index = () => {
 
           {/* ── 4·5·6. LES TROIS UNIVERS (une seule image en fond) ── */}
           <div className="relative w-full">
-            <img src={troisDisciplines} alt="Oiseaux dans le ciel" className="block w-full h-auto" />
+            <img src={troisDisciplines} alt="Une pie en vol, une tortue de mer et des pivoines rouges" className="block w-full h-auto" />
             <div className="absolute inset-0 flex flex-col">
               {univers.map((u) => (
                 <Link
