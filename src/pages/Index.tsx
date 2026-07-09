@@ -225,6 +225,9 @@ const Index = () => {
               >
                 0032 484 78 42 74
               </a>
+              <p className="text-base md:text-xl mt-3 drop-shadow-[0_1px_8px_rgba(0,0,0,0.9)]">
+                46 rue Ansiaux, 4020 Liège
+              </p>
             </div>
             {/* Voile sombre en bas pour la lisibilité */}
             <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/55 to-transparent" />

@@ -237,6 +237,16 @@ const UniversDetail = () => {
                 ))}
               </div>
             )}
+
+            {/* Bouton vers la page Contact */}
+            <div className="text-center mt-16">
+              <a
+                href="/#contact"
+                className="inline-block font-body text-sm uppercase tracking-widest bg-primary text-primary-foreground px-8 py-4 rounded-full hover:bg-primary/90 transition-colors"
+              >
+                Contact
+              </a>
+            </div>
           </>
         )}
       </div>
