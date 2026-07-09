@@ -1,16 +1,39 @@
-import { useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, ImageIcon } from "lucide-react";
+import { ArrowLeft, ImageIcon, X } from "lucide-react";
 import paperTexture from "@/assets/paper-texture-2.png";
 import Navbar from "@/components/Navbar";
 import { univers } from "@/data/univers";
 
 const UniversDetail = () => {
   const { slug } = useParams();
+  const navigate = useNavigate();
   const u = univers.find((x) => x.id === slug);
   const dark = !!u?.dark;
   const banner = u?.banner || "";
+
+  // Retour fluide : on revient à la page précédente sans recharger.
+  // Si on est arrivé directement (pas d'historique), on va au bon endroit de l'accueil.
+  const retour = () => {
+    if (window.history.state?.idx > 0) navigate(-1);
+    else navigate(`/#${slug}`);
+  };
+
+  // Photo affichée en plein écran (galerie cliquable)
+  const [plein, setPlein] = useState<string | null>(null);
+  useEffect(() => {
+    if (!plein) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setPlein(null);
+    };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [plein]);
 
   // Toujours afficher la sous-page depuis le haut
   useEffect(() => {
@@ -31,26 +54,58 @@ const UniversDetail = () => {
       {/* Hero plein écran : image (rideau) alignée en haut + titre centré */}
       {u && banner && (
         <section className="relative h-screen w-full overflow-hidden">
-          <img src={banner} alt="" className="absolute inset-0 w-full h-full object-cover object-top" />
+          <img
+            src={banner}
+            alt=""
+            style={{ objectPosition: u.bannerPosition || "center" }}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
           {/* Dégradé en bas pour fondre l'image dans le fond noir, sans coupure */}
           <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-b from-transparent to-black" />
-          <a
-            href={`/#${slug}`}
+          <button
+            type="button"
+            onClick={retour}
             className="absolute top-20 left-6 z-20 inline-flex items-center gap-2 text-sm text-white/80 hover:text-white transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Retour
-          </a>
-          <div className="absolute inset-0 flex items-center justify-center px-6">
-            <motion.h1
+          </button>
+          {u.id === "interprete-nature" ? (
+            // Titre écrit le long d'une courbe sinueuse finissant à la bouche de la grenouille (« sa langue »).
+            // Le viewBox correspond aux dimensions de l'image, avec « slice » pour suivre object-cover.
+            <motion.svg
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.9 }}
-              className="font-heading text-5xl md:text-7xl text-white text-center drop-shadow-[0_2px_20px_rgba(0,0,0,0.85)]"
+              transition={{ duration: 1 }}
+              className="pointer-events-none absolute inset-0 w-full h-full"
+              viewBox="0 0 2345 1615"
+              preserveAspectRatio="xMidYMid slice"
             >
-              {u.title}
-            </motion.h1>
-          </div>
+              <defs>
+                <path id="langue-grenouille" fill="none" d="M 100,860 C 400,700 560,1130 840,975 C 1060,865 1200,930 1395,852" />
+              </defs>
+              <text
+                className="fill-white font-heading"
+                fontSize="120"
+                style={{ filter: "drop-shadow(0 3px 10px rgba(0,0,0,0.85))" }}
+              >
+                <textPath href="#langue-grenouille" startOffset="100%" textAnchor="end">
+                  {u.title}
+                </textPath>
+              </text>
+            </motion.svg>
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center px-6">
+              <motion.h1
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.9 }}
+                className="font-heading text-5xl md:text-7xl text-white text-center drop-shadow-[0_2px_20px_rgba(0,0,0,0.85)]"
+              >
+                {u.title}
+              </motion.h1>
+            </div>
+          )}
         </section>
       )}
 
@@ -62,15 +117,16 @@ const UniversDetail = () => {
             {/* En-tête classique (sans bannière) : Retour + titre + image */}
             {!banner && (
               <>
-                <a
-                  href={`/#${slug}`}
+                <button
+                  type="button"
+                  onClick={retour}
                   className={`inline-flex items-center gap-2 text-sm transition-colors mb-12 ${
                     dark ? "text-white/70 hover:text-white" : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   <ArrowLeft className="w-4 h-4" />
                   Retour
-                </a>
+                </button>
 
                 <motion.h1
                   initial={{ opacity: 0, y: 20 }}
@@ -158,21 +214,45 @@ const UniversDetail = () => {
             )}
 
             {u.gallery.length > 0 && (
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
                 {u.gallery.map((img, i) => (
-                  <img
+                  <button
                     key={i}
-                    src={img}
-                    alt={`${u.title} — photo ${i + 1}`}
-                    className="w-full h-64 object-cover rounded-xl"
-                    loading="lazy"
-                  />
+                    type="button"
+                    onClick={() => setPlein(img)}
+                    className="group block overflow-hidden rounded-xl cursor-zoom-in"
+                    aria-label={`Voir la photo ${i + 1} en plein écran`}
+                  >
+                    <img
+                      src={img}
+                      alt={`${u.title} — photo ${i + 1}`}
+                      loading="lazy"
+                      className="w-full aspect-[4/3] object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </button>
                 ))}
               </div>
             )}
           </>
         )}
       </div>
+
+      {/* Affichage plein écran d'une photo de la galerie */}
+      {plein && (
+        <div
+          onClick={() => setPlein(null)}
+          className="fixed inset-0 z-[80] bg-black/95 flex items-center justify-center p-4 cursor-zoom-out"
+        >
+          <button
+            aria-label="Fermer"
+            onClick={() => setPlein(null)}
+            className="absolute top-5 right-5 text-white/80 hover:text-white transition-colors"
+          >
+            <X className="w-8 h-8" />
+          </button>
+          <img src={plein} alt="" className="max-h-full max-w-full object-contain" />
+        </div>
+      )}
     </main>
   );
 };

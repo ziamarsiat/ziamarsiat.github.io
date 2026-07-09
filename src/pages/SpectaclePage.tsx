@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft, X } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { univers } from "@/data/univers";
@@ -9,6 +9,7 @@ type Spectacle = (typeof univers)[number]["spectacles"][number];
 // Page d'un spectacle : image (affiche) en haut, texte, puis triptyque de photos.
 const SpectaclePage = () => {
   const { slug } = useParams();
+  const navigate = useNavigate();
   const [plein, setPlein] = useState<string | null>(null);
 
   // On cherche le spectacle (et l'univers auquel il appartient) d'après le slug.
@@ -26,6 +27,12 @@ const SpectaclePage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [slug]);
+
+  // Retour fluide : page précédente sans rechargement (sinon, l'univers du spectacle).
+  const retour = () => {
+    if (window.history.state?.idx > 0) navigate(-1);
+    else navigate(`/univers/${universId}`);
+  };
 
   // Affichage plein écran : fermeture avec Échap + blocage du défilement de fond.
   useEffect(() => {
@@ -65,13 +72,14 @@ const SpectaclePage = () => {
 
       {/* Titre et texte */}
       <div className="max-w-3xl mx-auto px-6 pt-12 pb-14">
-        <Link
-          to={`/univers/${universId}`}
+        <button
+          type="button"
+          onClick={retour}
           className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors mb-8"
         >
           <ArrowLeft className="w-4 h-4" />
           Retour
-        </Link>
+        </button>
         <h1 className="font-heading text-4xl md:text-5xl mb-8">{spectacle.titre}</h1>
         {spectacle.description.length > 0 && (
           <div className="space-y-6 text-lg leading-relaxed text-white/85">

@@ -1,14 +1,15 @@
 import fleurRecitsMusique from "@/assets/fleur-recits-musique.jpg";
 import fleurSciences from "@/assets/fleur-sciences.jpg";
 import fleurArtPlastique from "@/assets/fleur-art-plastique.jpg";
-import sciences1 from "@/assets/sciences-1.jpg";
-import sciences2 from "@/assets/sciences-2.jpg";
-import sciences3 from "@/assets/sciences-3.jpg";
 import cabaneMagique from "@/assets/cabane-magique.png";
 import toursDeContes from "@/assets/tours-de-contes.png";
 import histoiresVoyage from "@/assets/histoires-voyage-ete.png";
 import toutSeTransforme from "@/assets/tout-se-transforme.png";
 import rideauRouge from "@/assets/rideau-rouge.png";
+import grenouilleMare from "@/assets/grenouille-mare.png";
+import nature1 from "@/assets/nature-1.jpg";
+import nature2 from "@/assets/nature-2.jpg";
+import nature3 from "@/assets/nature-3.jpg";
 import cabane1 from "@/assets/cabane-1.jpg";
 import cabane2 from "@/assets/cabane-2.jpg";
 import cabane3 from "@/assets/cabane-3.jpg";
@@ -35,6 +36,7 @@ export const univers = [
     // Page à fond noir avec une bannière (rideau rouge) en haut.
     dark: true,
     banner: rideauRouge,
+    bannerPosition: "center 42%",
     items: [],
     // Les spectacles affichés en cadres. Ajoutez « image » plus tard pour une photo.
     spectacles: [
@@ -94,11 +96,12 @@ export const univers = [
     alt: "Fleur corail",
     position: "center",
     text: "Pourquoi les choses sont-elles comme elles sont ? Entre savoir et magie, il y a l'émerveillement. À la découverte des vivants qui nous entourent : des ateliers pour tous les âges, basés sur une pédagogie de l'expérimentation.",
-    dark: false,
-    banner: "",
+    dark: true,
+    banner: grenouilleMare,
+    bannerPosition: "center 50%",
     items: [],
     spectacles: [],
-    gallery: [sciences1, sciences2, sciences3],
+    gallery: [nature1, nature2, nature3],
   },
   {
     id: "plasticienne",
@@ -109,6 +112,7 @@ export const univers = [
     text: "Nos yeux voient, nos corps sentent et entendent. Je crée avec mes sens pour partager des sensations.",
     dark: false,
     banner: "",
+    bannerPosition: "",
     items: [],
     spectacles: [],
     gallery: [],
