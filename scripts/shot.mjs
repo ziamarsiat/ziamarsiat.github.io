@@ -1,0 +1,12 @@
+import { chromium } from "playwright";
+import { mkdirSync } from "fs";
+import path from "path";
+const outDir = path.resolve("screenshots");
+mkdirSync(outDir, { recursive: true });
+const browser = await chromium.launch();
+const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+await page.goto("http://localhost:8080/univers/actrice-conteuse", { waitUntil: "networkidle" });
+await page.waitForTimeout(1000);
+await page.screenshot({ path: path.join(outDir, "titre-haut.png") });
+await browser.close();
+console.log("ok");

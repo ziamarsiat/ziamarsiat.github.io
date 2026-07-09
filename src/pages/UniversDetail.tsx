@@ -82,20 +82,24 @@ const UniversDetail = () => {
               preserveAspectRatio="xMidYMid slice"
             >
               <defs>
-                <path id="langue-grenouille" fill="none" d="M 100,860 C 400,700 560,1130 840,975 C 1060,865 1200,930 1395,852" />
+                <path
+                  id="langue-grenouille"
+                  fill="none"
+                  d="M 1111,806 C 1180,640 1250,570 1323,563 C 1430,555 1520,660 1616,702 C 1662,722 1690,660 1717,637 C 1850,570 2050,690 2172,716"
+                />
               </defs>
               <text
                 className="fill-white font-heading"
-                fontSize="120"
-                style={{ filter: "drop-shadow(0 3px 10px rgba(0,0,0,0.85))" }}
+                fontSize="115"
+                style={{ filter: "drop-shadow(0 3px 10px rgba(0,0,0,0.9))" }}
               >
-                <textPath href="#langue-grenouille" startOffset="100%" textAnchor="end">
+                <textPath href="#langue-grenouille" startOffset="0">
                   {u.title}
                 </textPath>
               </text>
             </motion.svg>
           ) : (
-            <div className="absolute inset-0 flex items-center justify-center px-6">
+            <div className="absolute inset-0 flex items-start justify-center px-6 pt-24 md:pt-32">
               <motion.h1
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
