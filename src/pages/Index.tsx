@@ -96,8 +96,8 @@ const Index = () => {
                   Qui <em className="text-primary">suis-je</em> ?
                 </motion.h2>
                 <motion.p {...fadeUp} className="text-lg md:text-xl leading-relaxed text-muted-foreground">
-                  Je suis curieuse. J'aime apprendre et essayer de nouvelles choses. Ce trait de caractère m'a menée à
-                  emprunter de nombreux sentiers.
+                  Créatrice interdisciplinaire, j'explore les pratiques pour vous proposer des expériences qui
+                  réunissent savoir et imaginaire.
                 </motion.p>
               </div>
             </div>
