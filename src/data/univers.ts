@@ -5,6 +5,7 @@ import sciences1 from "@/assets/sciences-1.jpg";
 import sciences2 from "@/assets/sciences-2.jpg";
 import sciences3 from "@/assets/sciences-3.jpg";
 import cabaneMagique from "@/assets/cabane-magique.png";
+import toursDeContes from "@/assets/tours-de-contes.png";
 import cabane1 from "@/assets/cabane-1.jpg";
 import cabane2 from "@/assets/cabane-2.jpg";
 import cabane3 from "@/assets/cabane-3.jpg";
@@ -31,7 +32,17 @@ export const univers = [
     items: [],
     // Les spectacles affichés en cadres. Ajoutez « image » plus tard pour une photo.
     spectacles: [
-      { titre: "Tours de contes", public: "Tout public", image: "", slug: "tours-de-contes", description: [], photos: [] },
+      {
+        titre: "Tours de contes",
+        public: "Tout public",
+        image: toursDeContes,
+        slug: "tours-de-contes",
+        description: [
+          "Vous avez faim d'histoires ? Vous en voulez à vous mettre sous la dent ? En voici, pétries avec amour, cuites dans le four de ma caboche. Elles font la part belle aux courageux·ses, aux ruses, à l'aventure.",
+          "Embarquez sur la route de l'imaginaire, destination le pays de Tous-les-Possibles, dans la contrée des sincères carabistouilles. Mensonge ou vérité ? Vous seul pourriez en décider.",
+        ],
+        photos: [],
+      },
       { titre: "Histoires d'un jardin d'été", public: "6 mois +", image: "", slug: "histoires-d-un-jardin-d-ete", description: [], photos: [] },
       { titre: "Tout se transforme", public: "6 ans +", image: "", slug: "tout-se-transforme", description: [], photos: [] },
       {
