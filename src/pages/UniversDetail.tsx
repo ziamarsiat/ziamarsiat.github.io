@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
@@ -8,6 +9,11 @@ import { univers } from "@/data/univers";
 const UniversDetail = () => {
   const { slug } = useParams();
   const u = univers.find((x) => x.id === slug);
+
+  // Toujours afficher la sous-page depuis le haut
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
 
   return (
     <main

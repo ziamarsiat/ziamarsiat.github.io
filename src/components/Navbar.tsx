@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 import papillon from "@/assets/papillon.png";
 
 const links = [
   { label: "Accueil", href: "/#accueil" },
   { label: "Qui suis-je", href: "/#qui-suis-je" },
   { label: "Agenda", href: "/#agenda" },
-  { label: "Actrice-conteuse", href: "/#actrice-conteuse" },
-  { label: "Interprète Nature", href: "/#interprete-nature" },
-  { label: "Plasticienne", href: "/#plasticienne" },
+  { label: "Actrice-conteuse", href: "/univers/actrice-conteuse" },
+  { label: "Interprète Nature", href: "/univers/interprete-nature" },
+  { label: "Plasticienne", href: "/univers/plasticienne" },
   { label: "Parcours", href: "/#parcours" },
   { label: "Contact", href: "/#contact" },
 ];
@@ -79,22 +80,29 @@ const Navbar = ({ solid = false }) => {
           >
             <nav className="h-full flex flex-col justify-center items-end px-10 md:px-20">
               <ul className="space-y-4 md:space-y-6 text-right">
-                {links.map((l, i) => (
-                  <motion.li
-                    key={l.href}
-                    initial={{ opacity: 0, x: 30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.12 + i * 0.05, duration: 0.4 }}
-                  >
-                    <a
-                      href={l.href}
-                      onClick={() => setOpen(false)}
-                      className="font-heading text-3xl md:text-5xl text-foreground hover:text-primary transition-colors"
+                {links.map((l, i) => {
+                  const isSection = l.href.includes("#");
+                  const className =
+                    "font-heading text-3xl md:text-5xl text-foreground hover:text-primary transition-colors";
+                  return (
+                    <motion.li
+                      key={l.href}
+                      initial={{ opacity: 0, x: 30 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.12 + i * 0.05, duration: 0.4 }}
                     >
-                      {l.label}
-                    </a>
-                  </motion.li>
-                ))}
+                      {isSection ? (
+                        <a href={l.href} onClick={() => setOpen(false)} className={className}>
+                          {l.label}
+                        </a>
+                      ) : (
+                        <Link to={l.href} onClick={() => setOpen(false)} className={className}>
+                          {l.label}
+                        </Link>
+                      )}
+                    </motion.li>
+                  );
+                })}
               </ul>
             </nav>
           </motion.div>

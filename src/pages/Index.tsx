@@ -10,18 +10,7 @@ import parcoursBoussole from "@/assets/parcours-boussole.png";
 import troisDisciplines from "@/assets/trois-disciplines.png";
 import contactImg from "@/assets/contact.png";
 import { univers } from "@/data/univers";
-
-// ─────────────────────────────────────────────────────────────
-//  AGENDA — vos dates
-//  👉 Pour ajouter une date : copiez un bloc { ... }, collez-le
-//     et modifiez le texte. Laissez lien: "" s'il n'y a pas de lien.
-// ─────────────────────────────────────────────────────────────
-const evenements = [
-  { date: "14 septembre 2026", titre: "Contes sous les étoiles", lieu: "Théâtre de la Vie, Bruxelles", lien: "https://www.theatredelavie.be" },
-  { date: "3 octobre 2026", titre: "Balade musicale en forêt", lieu: "Forêt de Soignes", lien: "https://maps.google.com/?q=Forêt+de+Soignes" },
-  { date: "22 novembre 2026", titre: "Atelier création nature", lieu: "Centre culturel de Wavre", lien: "https://www.ccwavre.be" },
-  { date: "13 décembre 2026", titre: "Récital de Noël", lieu: "Église Saint-Loup, Namur", lien: "" },
-];
+import { useAgenda } from "@/data/agenda";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -31,6 +20,8 @@ const fadeUp = {
 };
 
 const Index = () => {
+  const { evenements } = useAgenda();
+
   return (
     <>
       <Navbar />
@@ -115,7 +106,10 @@ const Index = () => {
                               {e.lieu}
                             </a>
                           ) : (
-                            <span className="text-muted-foreground">{e.lieu}</span>
+                            <span className="text-foreground">{e.lieu}</span>
+                          )}
+                          {e.ville && (
+                            <span className="text-foreground">{e.lieu ? ", " : ""}{e.ville}</span>
                           )}
                         </td>
                       </tr>
