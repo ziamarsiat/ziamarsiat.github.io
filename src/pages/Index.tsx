@@ -11,6 +11,7 @@ import collageCurieuse from "@/assets/collage-curieuse.png";
 import parcoursBoussole from "@/assets/parcours-boussole.png";
 import troisDisciplines from "@/assets/trois-disciplines.png";
 import contactImg from "@/assets/contact.png";
+import agendaCiel from "@/assets/agenda-ciel.jpg";
 import { univers } from "@/data/univers";
 import { useAgenda } from "@/data/agenda";
 
@@ -105,12 +106,16 @@ const Index = () => {
           </section>
 
           {/* ── 3. AGENDA ── */}
-          <section id="agenda" className="py-24 md:py-32 px-6">
+          <section
+            id="agenda"
+            className="py-24 md:py-32 px-6 bg-cover bg-center"
+            style={{ backgroundImage: `url(${agendaCiel})` }}
+          >
             <div className="max-w-3xl mx-auto">
               <motion.h2 {...fadeUp} className="font-heading text-4xl md:text-5xl text-center mb-12">
                 <em className="text-primary">Agenda</em>
               </motion.h2>
-              <motion.div {...fadeUp} className="overflow-x-auto border border-border rounded-xl bg-background/60">
+              <motion.div {...fadeUp} className="overflow-x-auto border border-border rounded-xl bg-background shadow-lg">
                 <table className="w-full border-collapse text-left">
                   <thead>
                     <tr className="border-b border-border bg-muted/40">
@@ -221,6 +226,17 @@ const Index = () => {
                 0032 484 78 42 74
               </a>
             </div>
+            {/* Voile sombre en bas pour la lisibilité */}
+            <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/55 to-transparent" />
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="absolute inset-x-0 bottom-0 pb-10 md:pb-16 px-6 text-center font-heading text-3xl md:text-5xl text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]"
+            >
+              À bientôt !
+            </motion.p>
           </section>
 
           <footer className="py-8 px-6 text-center border-t border-border">

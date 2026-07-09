@@ -24,11 +24,13 @@ export const univers = [
     alt: "Pivoine rouge",
     position: "center",
     text: "Raconter, c'est créer un petit bout de rêve à partager. Les histoires prennent vie par le chant et le violoncelle.",
-    items: [
-      "Tours de contes — Tout public",
-      "Histoires d'un jardin d'été — 6 mois et +",
-      "Tout se transforme — 6 ans et +",
-      "Cabane magique — Espace nomade",
+    items: [],
+    // Les spectacles affichés en cadres. Ajoutez « image » plus tard pour une photo.
+    spectacles: [
+      { titre: "Tours de contes", public: "Tout public", image: "" },
+      { titre: "Histoires d'un jardin d'été", public: "6 mois +", image: "" },
+      { titre: "Tout se transforme", public: "6 ans +", image: "" },
+      { titre: "Cabane magique", public: "Espace nomade", image: "" },
     ],
     gallery: [],
   },
@@ -40,6 +42,7 @@ export const univers = [
     position: "center",
     text: "Pourquoi les choses sont-elles comme elles sont ? Entre savoir et magie, il y a l'émerveillement. À la découverte des vivants qui nous entourent : des ateliers pour tous les âges, basés sur une pédagogie de l'expérimentation.",
     items: [],
+    spectacles: [],
     gallery: [sciences1, sciences2, sciences3],
   },
   {
@@ -50,6 +53,7 @@ export const univers = [
     position: "center",
     text: "Nos yeux voient, nos corps sentent et entendent. Je crée avec mes sens pour partager des sensations.",
     items: [],
+    spectacles: [],
     gallery: [],
   },
 ];
