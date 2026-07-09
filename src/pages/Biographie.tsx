@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowLeft, BookOpen } from "lucide-react";
@@ -47,6 +48,11 @@ const steps = [
 ];
 
 const Biographie = () => {
+  // Toujours afficher la page depuis le haut
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <main className="min-h-screen bg-background font-body">
       <Navbar solid />
