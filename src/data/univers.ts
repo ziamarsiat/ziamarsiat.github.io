@@ -5,6 +5,9 @@ import sciences1 from "@/assets/sciences-1.jpg";
 import sciences2 from "@/assets/sciences-2.jpg";
 import sciences3 from "@/assets/sciences-3.jpg";
 import cabaneMagique from "@/assets/cabane-magique.png";
+import cabane1 from "@/assets/cabane-1.jpg";
+import cabane2 from "@/assets/cabane-2.jpg";
+import cabane3 from "@/assets/cabane-3.jpg";
 
 // ─────────────────────────────────────────────────────────────
 //  LES TROIS UNIVERS
@@ -28,10 +31,21 @@ export const univers = [
     items: [],
     // Les spectacles affichés en cadres. Ajoutez « image » plus tard pour une photo.
     spectacles: [
-      { titre: "Tours de contes", public: "Tout public", image: "", slug: "tours-de-contes" },
-      { titre: "Histoires d'un jardin d'été", public: "6 mois +", image: "", slug: "histoires-d-un-jardin-d-ete" },
-      { titre: "Tout se transforme", public: "6 ans +", image: "", slug: "tout-se-transforme" },
-      { titre: "Cabane magique", public: "Espace nomade", image: cabaneMagique, slug: "cabane-magique" },
+      { titre: "Tours de contes", public: "Tout public", image: "", slug: "tours-de-contes", description: [], photos: [] },
+      { titre: "Histoires d'un jardin d'été", public: "6 mois +", image: "", slug: "histoires-d-un-jardin-d-ete", description: [], photos: [] },
+      { titre: "Tout se transforme", public: "6 ans +", image: "", slug: "tout-se-transforme", description: [], photos: [] },
+      {
+        titre: "Cabane magique",
+        public: "Espace nomade",
+        image: cabaneMagique,
+        slug: "cabane-magique",
+        description: [
+          "Les cordes se tendent, les toiles se hissent, suspendue dans les airs, la cabane magique crée un cocon. Le secret de cette construction ? Sa légèreté. Les toiles s'accrochent là où on ne les attend pas.",
+          "Qui n'a jamais tendu de couverture ou empilé des coussins pour se créer un lieu à soi ? La cabane, c'est exactement ça : un espace cousu main à la mesure de mes rêves et de mon envie de rassembler.",
+          "La cabane se déploie dans vos événements pour créer un lieu magique.",
+        ],
+        photos: [cabane1, cabane2, cabane3],
+      },
     ],
     gallery: [],
   },

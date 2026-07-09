@@ -240,7 +240,7 @@ const Index = () => {
           </section>
 
           <footer className="py-8 px-6 text-center border-t border-border">
-            <p className="text-sm text-muted-foreground">
+            <p className="text-base md:text-lg text-muted-foreground">
               Photo : Tiffany's Story -{" "}
               <a href="https://objectiffb.be/" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground transition-colors">
                 objectiffb.be

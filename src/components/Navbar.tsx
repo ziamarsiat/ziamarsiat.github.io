@@ -14,8 +14,8 @@ const links = [
   { label: "Contact", href: "/#contact" },
 ];
 
-// `solid` force le texte foncé (utile sur les sous-pages au fond clair).
-const Navbar = ({ solid = false }) => {
+// `solid` force le texte foncé (fond clair) ; `light` force le texte blanc (fond foncé).
+const Navbar = ({ solid = false, light = false }) => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -34,8 +34,8 @@ const Navbar = ({ solid = false }) => {
     };
   }, [open]);
 
-  // Texte clair sur le visuel d'accueil ; foncé une fois la page défilée ou le menu ouvert
-  const textColor = solid || scrolled || open ? "text-foreground" : "text-white";
+  // Couleur du bouton/menu : blanc forcé (light), foncé forcé (solid), sinon selon le défilement.
+  const textColor = open ? "text-foreground" : light ? "text-white" : solid || scrolled ? "text-foreground" : "text-white";
 
   return (
     <>
