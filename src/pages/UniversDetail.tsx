@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import paperTexture from "@/assets/paper-texture-2.png";
@@ -22,13 +22,14 @@ const UniversDetail = () => {
     >
       <Navbar solid />
       <div className="max-w-4xl mx-auto px-6 pt-28 pb-16">
-        <Link
-          to="/"
+        {/* Retour vers le bloc d'où l'on vient sur la page d'accueil (ex. #actrice-conteuse) */}
+        <a
+          href={`/#${slug}`}
           className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-12"
         >
           <ArrowLeft className="w-4 h-4" />
           Retour
-        </Link>
+        </a>
 
         {!u ? (
           <p className="text-lg text-muted-foreground">Section introuvable.</p>

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
@@ -21,6 +22,22 @@ const fadeUp = {
 
 const Index = () => {
   const { evenements } = useAgenda();
+
+  // Si on arrive sur la page avec un repère (ex. /#actrice-conteuse),
+  // on se positionne sur le bon bloc — même après le chargement des grandes images.
+  useEffect(() => {
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    if (!id) return;
+    const aller = () => document.getElementById(id)?.scrollIntoView();
+    if (document.readyState === "complete") aller();
+    else window.addEventListener("load", aller, { once: true });
+    // Plusieurs recalages : les grandes images décalent la page en se chargeant.
+    const minuteurs = [200, 600, 1200, 2000].map((d) => setTimeout(aller, d));
+    return () => {
+      window.removeEventListener("load", aller);
+      minuteurs.forEach(clearTimeout);
+    };
+  }, []);
 
   return (
     <>
