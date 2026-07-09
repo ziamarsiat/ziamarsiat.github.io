@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import paperTexture from "@/assets/paper-texture-2.png";
+import Navbar from "@/components/Navbar";
 import { univers } from "@/data/univers";
 
 const UniversDetail = () => {
@@ -13,7 +14,8 @@ const UniversDetail = () => {
       className="min-h-screen font-body"
       style={{ backgroundImage: `url(${paperTexture})`, backgroundRepeat: "repeat", backgroundSize: "600px auto" }}
     >
-      <div className="max-w-4xl mx-auto px-6 py-16">
+      <Navbar solid />
+      <div className="max-w-4xl mx-auto px-6 pt-28 pb-16">
         <Link
           to="/"
           className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-12"

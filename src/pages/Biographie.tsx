@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowLeft, BookOpen } from "lucide-react";
+import Navbar from "@/components/Navbar";
 
 const steps = [
   {
@@ -48,7 +49,8 @@ const steps = [
 const Biographie = () => {
   return (
     <main className="min-h-screen bg-background font-body">
-      <div className="max-w-4xl mx-auto px-6 py-16">
+      <Navbar solid />
+      <div className="max-w-4xl mx-auto px-6 pt-28 pb-16">
         <Link
           to="/"
           className="inline-flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-foreground transition-colors mb-12"
