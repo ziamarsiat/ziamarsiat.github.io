@@ -4,6 +4,7 @@ import fleurArtPlastique from "@/assets/fleur-art-plastique.jpg";
 import sciences1 from "@/assets/sciences-1.jpg";
 import sciences2 from "@/assets/sciences-2.jpg";
 import sciences3 from "@/assets/sciences-3.jpg";
+import cabaneMagique from "@/assets/cabane-magique.png";
 
 // ─────────────────────────────────────────────────────────────
 //  LES TROIS UNIVERS
@@ -27,10 +28,10 @@ export const univers = [
     items: [],
     // Les spectacles affichés en cadres. Ajoutez « image » plus tard pour une photo.
     spectacles: [
-      { titre: "Tours de contes", public: "Tout public", image: "" },
-      { titre: "Histoires d'un jardin d'été", public: "6 mois +", image: "" },
-      { titre: "Tout se transforme", public: "6 ans +", image: "" },
-      { titre: "Cabane magique", public: "Espace nomade", image: "" },
+      { titre: "Tours de contes", public: "Tout public", image: "", slug: "tours-de-contes" },
+      { titre: "Histoires d'un jardin d'été", public: "6 mois +", image: "", slug: "histoires-d-un-jardin-d-ete" },
+      { titre: "Tout se transforme", public: "6 ans +", image: "", slug: "tout-se-transforme" },
+      { titre: "Cabane magique", public: "Espace nomade", image: cabaneMagique, slug: "cabane-magique" },
     ],
     gallery: [],
   },

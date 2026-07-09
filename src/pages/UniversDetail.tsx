@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, ImageIcon } from "lucide-react";
 import paperTexture from "@/assets/paper-texture-2.png";
@@ -70,28 +70,45 @@ const UniversDetail = () => {
             {/* Cadres des spectacles */}
             {u.spectacles.length > 0 && (
               <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
-                {u.spectacles.map((s, i) => (
-                  <motion.div
-                    key={s.titre}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: i * 0.1 }}
-                    className="bg-card rounded-2xl border border-border overflow-hidden shadow-sm flex flex-col h-full"
-                  >
-                    <div className="aspect-[4/3] bg-muted/60 flex items-center justify-center text-muted-foreground/50">
+                {u.spectacles.map((s, i) => {
+                  const carteClass =
+                    "bg-card rounded-2xl border border-border overflow-hidden shadow-sm flex flex-col h-full";
+                  const contenu = (
+                    <>
+                      <div className="aspect-[4/3] bg-muted/60 flex items-center justify-center text-muted-foreground/50">
+                        {s.image ? (
+                          <img src={s.image} alt={s.titre} className="w-full h-full object-cover" loading="lazy" />
+                        ) : (
+                          <ImageIcon className="w-12 h-12" />
+                        )}
+                      </div>
+                      <div className="p-6 text-center">
+                        <h3 className="font-heading text-xl text-foreground mb-3">{s.titre}</h3>
+                        <p className="font-body text-xs uppercase tracking-widest text-primary">{s.public}</p>
+                      </div>
+                    </>
+                  );
+                  return (
+                    <motion.div
+                      key={s.titre}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: i * 0.1 }}
+                    >
                       {s.image ? (
-                        <img src={s.image} alt={s.titre} className="w-full h-full object-cover" loading="lazy" />
+                        <Link
+                          to={`/spectacle/${s.slug}`}
+                          className={`${carteClass} hover:border-primary/40 hover:shadow-lg transition-all duration-300`}
+                        >
+                          {contenu}
+                        </Link>
                       ) : (
-                        <ImageIcon className="w-12 h-12" />
+                        <div className={carteClass}>{contenu}</div>
                       )}
-                    </div>
-                    <div className="p-6 text-center">
-                      <h3 className="font-heading text-xl text-foreground mb-3">{s.titre}</h3>
-                      <p className="font-body text-xs uppercase tracking-widest text-primary">{s.public}</p>
-                    </div>
-                  </motion.div>
-                ))}
+                    </motion.div>
+                  );
+                })}
               </div>
             )}
 

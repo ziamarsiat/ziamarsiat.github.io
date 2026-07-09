@@ -10,6 +10,7 @@ import SciencesNaturelles from "./pages/SciencesNaturelles.tsx";
 import ArtPlastique from "./pages/ArtPlastique.tsx";
 import Biographie from "./pages/Biographie.tsx";
 import UniversDetail from "./pages/UniversDetail.tsx";
+import SpectaclePage from "./pages/SpectaclePage.tsx";
 import Contact from "./pages/Contact.tsx";
 import LettreInformation from "./pages/LettreInformation.tsx";
 import Agenda from "./pages/Agenda.tsx";
@@ -31,6 +32,7 @@ const App = () => (
           <Route path="/art-plastique" element={<ArtPlastique />} />
           <Route path="/biographie" element={<Biographie />} />
           <Route path="/univers/:slug" element={<UniversDetail />} />
+          <Route path="/spectacle/:slug" element={<SpectaclePage />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/lettre-information" element={<LettreInformation />} />
           <Route path="/agenda" element={<Agenda />} />

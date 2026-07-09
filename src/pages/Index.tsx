@@ -112,8 +112,8 @@ const Index = () => {
             style={{ backgroundImage: `url(${agendaCiel})` }}
           >
             <div className="max-w-3xl mx-auto">
-              <motion.h2 {...fadeUp} className="font-heading text-4xl md:text-5xl text-center mb-12">
-                <em className="text-primary">Agenda</em>
+              <motion.h2 {...fadeUp} className="font-heading text-4xl md:text-5xl text-center mb-12 drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
+                <em className="text-white">Agenda</em>
               </motion.h2>
               <motion.div {...fadeUp} className="overflow-x-auto border border-border rounded-xl bg-background shadow-lg">
                 <table className="w-full border-collapse text-left">
