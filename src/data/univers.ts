@@ -113,7 +113,7 @@ export const univers = [
     text: "Nos yeux voient, nos corps sentent et entendent. Je crée avec mes sens pour partager des sensations.",
     dark: true,
     banner: plasticienneBanner,
-    bannerPosition: "center 45%",
+    bannerPosition: "center top",
     items: [],
     spectacles: [],
     gallery: [],
