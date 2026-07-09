@@ -76,7 +76,7 @@ const Navbar = ({ solid = false }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-50 bg-gradient-to-br from-[#f7e4e4] via-[#eecccf] to-[#d9a7b0]"
+            className="fixed inset-0 z-50 bg-[linear-gradient(100deg,rgba(247,228,228,0)_0%,rgba(240,205,210,0.45)_40%,rgba(222,170,179,0.96)_70%,rgb(214,158,168)_100%)]"
           >
             <nav className="h-full flex flex-col justify-center items-end px-10 md:px-20">
               <ul className="space-y-4 md:space-y-6 text-right">

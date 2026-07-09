@@ -56,7 +56,11 @@ const Index = () => {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="text-sm md:text-base uppercase tracking-[0.3em] text-white/90 mb-4 drop-shadow-[0_1px_8px_rgba(0,0,0,0.6)]"
             >
-              Actrice-conteuse · Interprète Nature · Plasticienne
+              <Link to="/univers/actrice-conteuse" className="hover:text-primary transition-colors">Actrice-conteuse</Link>
+              <span className="mx-2">·</span>
+              <Link to="/univers/interprete-nature" className="hover:text-primary transition-colors">Interprète Nature</Link>
+              <span className="mx-2">·</span>
+              <Link to="/univers/plasticienne" className="hover:text-primary transition-colors">Plasticienne</Link>
             </motion.p>
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
@@ -64,9 +68,11 @@ const Index = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="font-lostar text-7xl md:text-8xl lg:text-9xl tracking-[0.04em] leading-none text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.55)]"
             >
-              <span>Zia</span>
-              <span className="mx-2 md:mx-4"></span>
-              <span>Marsiat</span>
+              <a href="/#contact" className="hover:text-primary transition-colors">
+                <span>Zia</span>
+                <span className="mx-2 md:mx-4"></span>
+                <span>Marsiat</span>
+              </a>
             </motion.h1>
           </div>
         </section>
@@ -76,7 +82,7 @@ const Index = () => {
           style={{ backgroundImage: `url(${paperTexture})`, backgroundRepeat: "repeat", backgroundSize: "600px auto" }}
         >
           {/* ── 2. QUI SUIS-JE ── */}
-          <section id="qui-suis-je" className="pt-24 md:pt-32">
+          <section id="qui-suis-je">
             <motion.img
               {...fadeUp}
               src={collageCurieuse}
