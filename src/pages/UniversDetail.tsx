@@ -85,12 +85,12 @@ const UniversDetail = () => {
                 <path
                   id="langue-grenouille"
                   fill="none"
-                  d="M 1111,806 C 1180,640 1250,570 1323,563 C 1430,555 1520,660 1616,702 C 1662,722 1690,660 1717,637 C 1850,570 2050,690 2172,716"
+                  d="M 1090,815 C 1230,605 1390,545 1560,575 C 1770,613 1975,700 2180,775"
                 />
               </defs>
               <text
                 className="fill-white font-heading"
-                fontSize="115"
+                fontSize="108"
                 style={{ filter: "drop-shadow(0 3px 10px rgba(0,0,0,0.9))" }}
               >
                 <textPath href="#langue-grenouille" startOffset="0">
