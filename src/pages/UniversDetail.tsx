@@ -32,6 +32,8 @@ const UniversDetail = () => {
       {u && banner && (
         <section className="relative h-screen w-full overflow-hidden">
           <img src={banner} alt="" className="absolute inset-0 w-full h-full object-cover object-top" />
+          {/* Dégradé en bas pour fondre l'image dans le fond noir, sans coupure */}
+          <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-b from-transparent to-black" />
           <a
             href={`/#${slug}`}
             className="absolute top-20 left-6 z-20 inline-flex items-center gap-2 text-sm text-white/80 hover:text-white transition-colors"
@@ -118,7 +120,7 @@ const UniversDetail = () => {
                     "bg-card rounded-2xl border border-border overflow-hidden shadow-sm flex flex-col h-full";
                   const contenu = (
                     <>
-                      <div className="aspect-[4/3] bg-muted/60 flex items-center justify-center text-muted-foreground/50">
+                      <div className="aspect-square bg-muted/60 flex items-center justify-center text-muted-foreground/50">
                         {s.image ? (
                           <img src={s.image} alt={s.titre} className="w-full h-full object-cover" loading="lazy" />
                         ) : (
