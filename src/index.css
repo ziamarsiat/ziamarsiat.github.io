@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Lato:wght@300;400;700&display=swap');
 
+/* Police personnalisée pour le nom sur la page d'accueil */
+@font-face {
+  font-family: 'Lostar';
+  src: url('/fonts/Lostar.ttf') format('truetype');
+  font-display: swap;
+}
+
+.font-lostar {
+  font-family: 'Lostar', serif;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

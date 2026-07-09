@@ -3,17 +3,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import papillon from "@/assets/papillon.png";
 
 const links = [
-  { label: "Accueil", href: "#accueil" },
-  { label: "Qui suis-je", href: "#qui-suis-je" },
-  { label: "Agenda", href: "#agenda" },
-  { label: "Actrice-conteuse", href: "#actrice-conteuse" },
-  { label: "Interprète Nature", href: "#interprete-nature" },
-  { label: "Plasticienne", href: "#plasticienne" },
-  { label: "Parcours", href: "#parcours" },
-  { label: "Contact", href: "#contact" },
+  { label: "Accueil", href: "/#accueil" },
+  { label: "Qui suis-je", href: "/#qui-suis-je" },
+  { label: "Agenda", href: "/#agenda" },
+  { label: "Actrice-conteuse", href: "/#actrice-conteuse" },
+  { label: "Interprète Nature", href: "/#interprete-nature" },
+  { label: "Plasticienne", href: "/#plasticienne" },
+  { label: "Parcours", href: "/#parcours" },
+  { label: "Contact", href: "/#contact" },
 ];
 
-const Navbar = () => {
+// `solid` force le texte foncé (utile sur les sous-pages au fond clair).
+const Navbar = ({ solid = false }) => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -33,14 +34,14 @@ const Navbar = () => {
   }, [open]);
 
   // Texte clair sur le visuel d'accueil ; foncé une fois la page défilée ou le menu ouvert
-  const textColor = scrolled || open ? "text-foreground" : "text-white";
+  const textColor = solid || scrolled || open ? "text-foreground" : "text-white";
 
   return (
     <>
       <header className="fixed top-0 inset-x-0 z-[60] bg-transparent">
         <nav className="max-w-6xl mx-auto px-6 h-16 md:h-20 flex items-center justify-between">
           <a
-            href="#accueil"
+            href="/#accueil"
             onClick={() => setOpen(false)}
             className="flex items-center"
             aria-label="Zia Marsiat — Accueil"

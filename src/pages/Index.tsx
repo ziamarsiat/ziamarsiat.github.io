@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
+import FeuFollet from "@/components/FeuFollet";
 
 import paperTexture from "@/assets/paper-texture-2.png";
-import paysagePrairie from "@/assets/paysage-prairie.jpg";
+import accueilBg from "@/assets/accueil.png";
 import collageCurieuse from "@/assets/collage-curieuse.png";
 import parcoursBoussole from "@/assets/parcours-boussole.png";
 import troisDisciplines from "@/assets/trois-disciplines.png";
@@ -37,8 +38,9 @@ const Index = () => {
       <main className="font-body text-foreground">
         {/* ── 1. ACCUEIL ── */}
         <section id="accueil" className="relative h-screen min-h-[600px] w-full overflow-hidden">
-          <img src={paysagePrairie} alt="Prairie au coucher de soleil" className="absolute inset-0 w-full h-full object-cover" />
+          <img src={accueilBg} alt="Forêt ensoleillée avec un ours" className="absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/55" />
+          <FeuFollet />
           <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -52,11 +54,11 @@ const Index = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="font-heading text-7xl md:text-8xl lg:text-9xl font-bold tracking-[0.04em] leading-none text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.55)]"
+              className="font-lostar text-7xl md:text-8xl lg:text-9xl tracking-[0.04em] leading-none text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.55)]"
             >
-              <span className="not-italic">Zia</span>
+              <span>Zia</span>
               <span className="mx-2 md:mx-4"></span>
-              <span className="italic">Marsiat</span>
+              <span>Marsiat</span>
             </motion.h1>
           </div>
         </section>
