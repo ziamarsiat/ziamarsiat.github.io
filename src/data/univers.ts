@@ -51,7 +51,7 @@ export const univers = [
       },
       {
         titre: "Histoires d'un voyage d'été",
-        public: "6 mois +",
+        public: "18 mois +",
         image: histoiresVoyage,
         slug: "histoires-d-un-voyage-d-ete",
         description: [
@@ -62,7 +62,7 @@ export const univers = [
       },
       {
         titre: "Tout se transforme",
-        public: "6 ans +",
+        public: "En création",
         image: toutSeTransforme,
         slug: "tout-se-transforme",
         description: [

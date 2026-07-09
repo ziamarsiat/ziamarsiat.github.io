@@ -28,49 +28,67 @@ const UniversDetail = () => {
     >
       {dark ? <Navbar light /> : <Navbar solid />}
 
-      {/* Bannière en haut de page (ex. rideau rouge pour Actrice-conteuse) */}
-      {banner && (
-        <div className="w-full pt-16 md:pt-20">
-          <img src={banner} alt="" className="mx-auto block max-h-[75vh] w-auto max-w-full object-contain" />
-        </div>
+      {/* Hero plein écran : image (rideau) alignée en haut + titre centré */}
+      {u && banner && (
+        <section className="relative h-screen w-full overflow-hidden">
+          <img src={banner} alt="" className="absolute inset-0 w-full h-full object-cover object-top" />
+          <a
+            href={`/#${slug}`}
+            className="absolute top-20 left-6 z-20 inline-flex items-center gap-2 text-sm text-white/80 hover:text-white transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Retour
+          </a>
+          <div className="absolute inset-0 flex items-center justify-center px-6">
+            <motion.h1
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.9 }}
+              className="font-heading text-5xl md:text-7xl text-white text-center drop-shadow-[0_2px_20px_rgba(0,0,0,0.85)]"
+            >
+              {u.title}
+            </motion.h1>
+          </div>
+        </section>
       )}
 
-      <div className={`max-w-4xl mx-auto px-6 pb-16 ${banner ? "pt-10" : "pt-28"}`}>
-        {/* Retour vers le bloc d'où l'on vient sur la page d'accueil (ex. #actrice-conteuse) */}
-        <a
-          href={`/#${slug}`}
-          className={`inline-flex items-center gap-2 text-sm transition-colors mb-12 ${
-            dark ? "text-white/70 hover:text-white" : "text-muted-foreground hover:text-foreground"
-          }`}
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Retour
-        </a>
-
+      <div className={`max-w-4xl mx-auto px-6 pb-16 ${banner ? "pt-16 md:pt-24" : "pt-28"}`}>
         {!u ? (
           <p className="text-lg text-muted-foreground">Section introuvable.</p>
         ) : (
           <>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="font-heading text-4xl md:text-5xl text-primary mb-8"
-            >
-              {u.title}
-            </motion.h1>
-
-            {/* L'image de l'univers (sauf si une bannière la remplace en haut) */}
+            {/* En-tête classique (sans bannière) : Retour + titre + image */}
             {!banner && (
-              <motion.img
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                src={u.image}
-                alt={u.alt}
-                style={{ objectPosition: u.position }}
-                className="w-full h-[45vh] md:h-[55vh] object-cover rounded-2xl shadow-md mb-10"
-              />
+              <>
+                <a
+                  href={`/#${slug}`}
+                  className={`inline-flex items-center gap-2 text-sm transition-colors mb-12 ${
+                    dark ? "text-white/70 hover:text-white" : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  <ArrowLeft className="w-4 h-4" />
+                  Retour
+                </a>
+
+                <motion.h1
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="font-heading text-4xl md:text-5xl text-primary mb-8"
+                >
+                  {u.title}
+                </motion.h1>
+
+                <motion.img
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                  src={u.image}
+                  alt={u.alt}
+                  style={{ objectPosition: u.position }}
+                  className="w-full h-[45vh] md:h-[55vh] object-cover rounded-2xl shadow-md mb-10"
+                />
+              </>
             )}
 
             <p
