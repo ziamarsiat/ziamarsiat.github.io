@@ -88,6 +88,19 @@ const SpectaclePage = () => {
             ))}
           </div>
         )}
+
+        {spectacle.dossier && (
+          <div className="mt-10">
+            <a
+              href={spectacle.dossier}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block font-body text-sm uppercase tracking-widest bg-primary text-primary-foreground px-8 py-4 rounded-full hover:bg-primary/90 transition-colors"
+            >
+              Dossier du spectacle
+            </a>
+          </div>
+        )}
       </div>
 
       {/* Triptyque de photos, cliquables */}

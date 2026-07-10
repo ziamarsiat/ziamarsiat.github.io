@@ -46,6 +46,7 @@ export const univers = [
         public: "Tout public",
         image: toursDeContes,
         slug: "tours-de-contes",
+        dossier: "",
         description: [
           "Vous avez faim d'histoires ? Vous en voulez à vous mettre sous la dent ? En voici, pétries avec amour, cuites dans le four de ma caboche. Elles font la part belle aux courageux·ses, aux ruses, à l'aventure.",
           "Embarquez sur la route de l'imaginaire, destination le pays de Tous-les-Possibles, dans la contrée des sincères carabistouilles. Mensonge ou vérité ? Vous seul pourriez en décider.",
@@ -57,6 +58,7 @@ export const univers = [
         public: "18 mois +",
         image: histoiresVoyage,
         slug: "histoires-d-un-voyage-d-ete",
+        dossier: "/dossiers/histoires-d-un-voyage-d-ete.pdf",
         description: [
           "Aujourd'hui, c'est décidé : Pixie part en voyage ! Bottes aux pieds et sac au dos, elle embarque dans le premier train pour la mer. Avec elle, plongez au cœur des flots et découvrez une ribambelle de personnages tendres et farfelu·es : un violoncelle marin, des vagues chantantes, un soleil superstar, une sirène à bulles et un monstre sympathique.",
           "Ce spectacle fait la part belle au bonheur de créer des mondes et à la fantaisie de l'imaginaire. Une grande traversée pour les petit·es et les grand·es nageur·euses, à savourer en famille.",
@@ -68,6 +70,7 @@ export const univers = [
         public: "En création",
         image: toutSeTransforme,
         slug: "tout-se-transforme",
+        dossier: "",
         description: [
           "Spectacle en création.",
           "Trois histoires, trois générations, et à chacune, la matière et les êtres se transforment. Au rythme des plantes qui poussent et des mains qui sculptent, les histoires se racontent.",
@@ -80,6 +83,7 @@ export const univers = [
         public: "Espace nomade",
         image: cabaneMagique,
         slug: "cabane-magique",
+        dossier: "",
         description: [
           "Les cordes se tendent, les toiles se hissent, suspendue dans les airs, la cabane magique crée un cocon. Le secret de cette construction ? Sa légèreté. Les toiles s'accrochent là où on ne les attend pas.",
           "Qui n'a jamais tendu de couverture ou empilé des coussins pour se créer un lieu à soi ? La cabane, c'est exactement ça : un espace cousu main à la mesure de mes rêves et de mon envie de rassembler.",
