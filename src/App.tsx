@@ -14,6 +14,7 @@ import SpectaclePage from "./pages/SpectaclePage.tsx";
 import Contact from "./pages/Contact.tsx";
 import LettreInformation from "./pages/LettreInformation.tsx";
 import Agenda from "./pages/Agenda.tsx";
+import DatesPassees from "./pages/DatesPassees.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -36,6 +37,7 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/lettre-information" element={<LettreInformation />} />
           <Route path="/agenda" element={<Agenda />} />
+          <Route path="/agenda/passees" element={<DatesPassees />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

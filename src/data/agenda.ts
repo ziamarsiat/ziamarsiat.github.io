@@ -102,6 +102,41 @@ function convertir(texte: string): Evenement[] {
     .filter((e) => e.date || e.titre || e.lieu);
 }
 
+// Noms de mois français → numéro du mois (0 = janvier).
+const MOIS_FR: Record<string, number> = {
+  janvier: 0, février: 1, fevrier: 1, mars: 2, avril: 3, mai: 4, juin: 5,
+  juillet: 6, août: 7, aout: 7, septembre: 8, octobre: 9, novembre: 10,
+  décembre: 11, decembre: 11,
+};
+
+// Transforme une date écrite en français ("11 juillet 2026 - 11:00") en vraie date.
+// Renvoie null si le format n'est pas reconnu (dans ce cas on garde la date « à venir »).
+export function parseDateFr(texte: string): Date | null {
+  const m = texte.match(/(\d{1,2})\s+([A-Za-zÀ-ÿ]+)\s+(\d{4})/);
+  if (!m) return null;
+  const mois = MOIS_FR[m[2].toLowerCase()];
+  if (mois === undefined) return null;
+  return new Date(parseInt(m[3], 10), mois, parseInt(m[1], 10));
+}
+
+// Sépare les événements en « à venir » et « passés » par rapport à aujourd'hui,
+// et les trie (à venir : les plus proches d'abord ; passés : les plus récents d'abord).
+export function separerAgenda(evs: Evenement[]): { aVenir: Evenement[]; passees: Evenement[] } {
+  const debutJour = new Date();
+  debutJour.setHours(0, 0, 0, 0);
+  const aVenir: Evenement[] = [];
+  const passees: Evenement[] = [];
+  for (const e of evs) {
+    const d = parseDateFr(e.date);
+    if (d && d.getTime() < debutJour.getTime()) passees.push(e);
+    else aVenir.push(e);
+  }
+  const t = (e: Evenement) => parseDateFr(e.date)?.getTime() ?? 0;
+  aVenir.sort((a, b) => t(a) - t(b));
+  passees.sort((a, b) => t(b) - t(a));
+  return { aVenir, passees };
+}
+
 type EtatAgenda = { evenements: Evenement[]; chargement: boolean };
 
 // Hook utilisé par la page d'accueil et la page Agenda.

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, ImageIcon, X } from "lucide-react";
+import { ArrowLeft, ImageIcon, X, Construction } from "lucide-react";
 import paperTexture from "@/assets/paper-texture-2.webp";
 import Navbar from "@/components/Navbar";
 import { univers } from "@/data/univers";
@@ -118,6 +118,19 @@ const UniversDetail = () => {
           <p className="text-lg text-muted-foreground">Section introuvable.</p>
         ) : (
           <>
+            {/* Bandeau « En construction » pour les univers pas encore finalisés */}
+            {u.enConstruction && (
+              <div className="flex items-center gap-4 rounded-2xl border border-amber-400/50 bg-amber-400/10 px-6 py-5 mb-10">
+                <Construction className="w-8 h-8 text-amber-400 shrink-0" />
+                <div>
+                  <p className="font-heading text-xl text-amber-300">En construction</p>
+                  <p className={`text-sm ${dark ? "text-white/70" : "text-muted-foreground"}`}>
+                    Cette page est en cours de préparation. Revenez bientôt !
+                  </p>
+                </div>
+              </div>
+            )}
+
             {/* En-tête classique (sans bannière) : Retour + titre + image */}
             {!banner && (
               <>

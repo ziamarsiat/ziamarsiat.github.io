@@ -34,6 +34,7 @@ export const univers = [
     alt: "Pivoine rouge",
     position: "center",
     text: "Raconter, c'est créer un petit bout de rêve à partager. Les histoires prennent vie par le chant et le violoncelle.",
+    enConstruction: false,
     // Page à fond noir avec une bannière (rideau rouge) en haut.
     dark: true,
     banner: rideauRouge,
@@ -101,6 +102,7 @@ export const univers = [
     alt: "Fleur corail",
     position: "center",
     text: "Pourquoi les choses sont-elles comme elles sont ? Entre savoir et magie, il y a l'émerveillement. À la découverte des vivants qui nous entourent : des ateliers pour tous les âges, basés sur une pédagogie de l'expérimentation.",
+    enConstruction: true,
     dark: true,
     banner: grenouilleMare,
     bannerPosition: "center 50%",
@@ -115,6 +117,7 @@ export const univers = [
     alt: "Pivoine rose",
     position: "center",
     text: "Nos yeux voient, nos corps sentent et entendent. Je crée avec mes sens pour partager des sensations.",
+    enConstruction: true,
     dark: true,
     banner: plasticienneBanner,
     bannerPosition: "center top",

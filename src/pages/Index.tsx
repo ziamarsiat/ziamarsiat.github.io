@@ -13,7 +13,7 @@ import troisDisciplines from "@/assets/trois-disciplines.webp";
 import contactImg from "@/assets/contact.webp";
 import agendaCiel from "@/assets/agenda-ciel.webp";
 import { univers } from "@/data/univers";
-import { useAgenda } from "@/data/agenda";
+import { useAgenda, separerAgenda } from "@/data/agenda";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -24,6 +24,7 @@ const fadeUp = {
 
 const Index = () => {
   const { evenements } = useAgenda();
+  const { aVenir, passees } = separerAgenda(evenements);
 
   // Si on arrive sur la page avec un repère (ex. /#actrice-conteuse),
   // on se positionne sur le bon bloc — même après le chargement des grandes images.
@@ -125,7 +126,14 @@ const Index = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {evenements.map((e, i) => (
+                    {aVenir.length === 0 && (
+                      <tr>
+                        <td colSpan={3} className="px-5 py-8 text-center text-muted-foreground italic">
+                          Aucune date à venir pour le moment. Revenez bientôt !
+                        </td>
+                      </tr>
+                    )}
+                    {aVenir.map((e, i) => (
                       <tr key={i} className="border-b border-border last:border-0 hover:bg-muted/30 transition-colors">
                         <td className="px-5 py-4 align-top whitespace-nowrap">{e.date}</td>
                         <td className="px-5 py-4 align-top font-medium">{e.titre}</td>
@@ -146,6 +154,17 @@ const Index = () => {
                   </tbody>
                 </table>
               </motion.div>
+
+              {passees.length > 0 && (
+                <motion.div {...fadeUp} className="text-center mt-6">
+                  <Link
+                    to="/agenda/passees"
+                    className="inline-block font-body text-sm uppercase tracking-widest bg-white/90 text-foreground px-6 py-3 rounded-full shadow hover:bg-white transition-colors"
+                  >
+                    Dates passées →
+                  </Link>
+                </motion.div>
+              )}
             </div>
           </section>
 
