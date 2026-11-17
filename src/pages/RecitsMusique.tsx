@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Music, ArrowLeft, ImageIcon } from "lucide-react";
 import paperTexture from "@/assets/paper-texture-2.webp";
+import { usePageSeo } from "@/lib/seo";
 
 const spectacles = [
   { title: "Tours de contes", audience: "Tout public", slug: "tours-de-contes" },
@@ -11,6 +12,7 @@ const spectacles = [
 ];
 
 const RecitsMusique = () => {
+  usePageSeo({ titre: "Récits & musique", description: "Spectacles de contes et musique de Zia Marsiat, conteuse à Liège.", noindex: true });
   return (
     <main
       className="min-h-screen font-body"

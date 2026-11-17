@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ImageIcon } from "lucide-react";
 import paperTexture from "@/assets/paper-texture-2.webp";
+import { usePageSeo } from "@/lib/seo";
 
 const spectacles: Record<string, { title: string; audience: string; description: string }> = {
   "tours-de-contes": {
@@ -30,6 +31,7 @@ const spectacles: Record<string, { title: string; audience: string; description:
 };
 
 const SpectacleDetail = () => {
+  usePageSeo({ titre: "Spectacle", description: "Spectacle de contes et musique de Zia Marsiat, conteuse à Liège.", noindex: true });
   const { slug } = useParams<{ slug: string }>();
   const spectacle = slug ? spectacles[slug] : undefined;
 

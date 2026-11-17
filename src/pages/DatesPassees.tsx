@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
+import AgendaListe from "@/components/AgendaListe";
 import { useAgenda, separerAgenda } from "@/data/agenda";
+import { usePageSeo, PAGES_FIXES } from "@/lib/seo";
 
 const DatesPassees = () => {
+  usePageSeo(PAGES_FIXES.find((p) => p.chemin === "/agenda/passees")!);
   const { evenements } = useAgenda();
   const { passees } = separerAgenda(evenements);
 
@@ -24,63 +27,7 @@ const DatesPassees = () => {
             Retrouvez ici les rendez-vous, spectacles et ateliers déjà passés.
           </p>
 
-          {passees.length === 0 ? (
-            <div className="border border-border rounded-xl p-8 text-center">
-              <p className="font-body text-muted-foreground italic">
-                Aucune date passée pour le moment.
-              </p>
-            </div>
-          ) : (
-            <div className="overflow-x-auto border border-border rounded-xl">
-              <table className="w-full border-collapse text-left">
-                <thead>
-                  <tr className="border-b border-border bg-muted/40">
-                    <th className="font-heading text-base text-primary font-bold px-5 py-4 whitespace-nowrap">
-                      Quand ?
-                    </th>
-                    <th className="font-heading text-base text-primary font-bold px-5 py-4">
-                      Quoi ?
-                    </th>
-                    <th className="font-heading text-base text-primary font-bold px-5 py-4">
-                      Où ?
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {passees.map((e, i) => (
-                    <tr
-                      key={i}
-                      className="border-b border-border last:border-0 hover:bg-muted/30 transition-colors"
-                    >
-                      <td className="font-body text-foreground px-5 py-4 align-top whitespace-nowrap">
-                        {e.date}
-                      </td>
-                      <td className="font-body text-foreground px-5 py-4 align-top font-medium">
-                        {e.titre}
-                      </td>
-                      <td className="font-body px-5 py-4 align-top">
-                        {e.lien ? (
-                          <a
-                            href={e.lien}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-primary underline underline-offset-2 hover:text-primary/70 transition-colors"
-                          >
-                            {e.lieu}
-                          </a>
-                        ) : (
-                          <span className="text-foreground">{e.lieu}</span>
-                        )}
-                        {e.ville && (
-                          <span className="text-foreground">{e.lieu ? ", " : ""}{e.ville}</span>
-                        )}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
+          <AgendaListe evenements={passees} messageVide="Aucune date passée pour le moment." />
         </div>
       </section>
     </main>

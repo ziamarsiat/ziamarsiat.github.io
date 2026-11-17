@@ -5,8 +5,10 @@ import { ArrowLeft, Mail } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { usePageSeo, PAGES_FIXES } from "@/lib/seo";
 
 const LettreInformation = () => {
+  usePageSeo(PAGES_FIXES.find((p) => p.chemin === "/lettre-information")!);
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const { toast } = useToast();

@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft, X } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { univers } from "@/data/univers";
+import { usePageSeo, seoSpectacle } from "@/lib/seo";
 
 type Spectacle = (typeof univers)[number]["spectacles"][number];
 
@@ -23,6 +24,7 @@ const SpectaclePage = () => {
       break;
     }
   }
+  usePageSeo(seoSpectacle(spectacle));
 
   useEffect(() => {
     window.scrollTo(0, 0);

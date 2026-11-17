@@ -4,8 +4,10 @@ import { motion } from "framer-motion";
 import sciences1 from "@/assets/sciences-1.webp";
 import sciences2 from "@/assets/sciences-2.webp";
 import sciences3 from "@/assets/sciences-3.webp";
+import { usePageSeo } from "@/lib/seo";
 
 const SciencesNaturelles = () => {
+  usePageSeo({ titre: "Sciences naturelles", description: "Ateliers et balades nature de Zia Marsiat, interprète nature à Liège.", noindex: true });
   return (
     <main className="min-h-screen bg-background font-body">
       <div className="max-w-4xl mx-auto px-6 py-16">

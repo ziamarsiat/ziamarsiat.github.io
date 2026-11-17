@@ -4,7 +4,9 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ImageIcon, X, Construction } from "lucide-react";
 import paperTexture from "@/assets/paper-texture-2.webp";
 import Navbar from "@/components/Navbar";
-import { univers } from "@/data/univers";
+import FlecheLumineuse from "@/components/FlecheLumineuse";
+import { universVisibles as univers } from "@/data/univers";
+import { usePageSeo, seoUnivers } from "@/lib/seo";
 
 const UniversDetail = () => {
   const { slug } = useParams();
@@ -12,6 +14,7 @@ const UniversDetail = () => {
   const u = univers.find((x) => x.id === slug);
   const dark = !!u?.dark;
   const banner = u?.banner || "";
+  usePageSeo(seoUnivers(u));
 
   // Retour fluide : on revient à la page précédente sans recharger.
   // Si on est arrivé directement (pas d'historique), on va au bon endroit de l'accueil.
@@ -99,21 +102,27 @@ const UniversDetail = () => {
               </text>
             </motion.svg>
           ) : (
-            <div className="absolute inset-0 flex items-start justify-center px-6 pt-24 md:pt-32">
+            <div className="absolute inset-0 flex items-start justify-center px-6 pt-36 md:pt-32">
               <motion.h1
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.9 }}
-                className="font-heading text-5xl md:text-7xl text-white text-center drop-shadow-[0_2px_20px_rgba(0,0,0,0.85)]"
+                className="font-heading text-6xl md:text-8xl text-white text-center drop-shadow-[0_2px_20px_rgba(0,0,0,0.85)]"
               >
                 {u.title}
               </motion.h1>
             </div>
           )}
+
+          {/* Flèche lumineuse en bas de l'image, qui invite à descendre */}
+          <FlecheLumineuse
+            cible="contenu"
+            className="absolute bottom-8 md:bottom-10 left-1/2 -translate-x-1/2 z-20 w-20 md:w-24"
+          />
         </section>
       )}
 
-      <div className={`max-w-4xl mx-auto px-6 pb-16 ${banner ? "pt-16 md:pt-24" : "pt-28"}`}>
+      <div id="contenu" className={`max-w-4xl mx-auto px-6 pb-16 ${banner ? "pt-16 md:pt-24" : "pt-28"}`}>
         {!u ? (
           <p className="text-lg text-muted-foreground">Section introuvable.</p>
         ) : (

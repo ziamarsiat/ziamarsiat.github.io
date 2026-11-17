@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Palette, ArrowLeft, ImageIcon } from "lucide-react";
 import paperTexture from "@/assets/paper-texture-2.webp";
+import { usePageSeo } from "@/lib/seo";
 
 const items = [
   { title: "Future titre", subtitle: "À venir" },
@@ -11,6 +12,7 @@ const items = [
 ];
 
 const ArtPlastique = () => {
+  usePageSeo({ titre: "Art plastique", description: "Travail plastique de Zia Marsiat, plasticienne à Liège.", noindex: true });
   return (
     <main
       className="min-h-screen font-body"

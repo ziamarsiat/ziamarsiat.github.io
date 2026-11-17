@@ -1,3 +1,14 @@
-# Welcome to your Lovable project
+# Site de Zia Marsiat
 
-TODO: Document your project here
+Site vitrine de Zia Marsiat, actrice-conteuse, musicienne et plasticienne à Liège.
+
+- Adresse en ligne : https://ziamarsiat.github.io/
+- Voir le site sur l'ordinateur : `npm run dev` puis ouvrir http://localhost:8080/
+- Publier : chaque envoi sur GitHub (branche `main`) met le site en ligne automatiquement.
+
+## Référencement (Google)
+
+- Les titres et descriptions des pages sont dans `src/lib/seo.ts`.
+- À la construction (`npm run build`), le script `scripts/seo-pages.mjs` crée une page HTML
+  par adresse et le plan du site `sitemap.xml`.
+- L'image affichée quand on partage un lien est `public/partage.jpg`.

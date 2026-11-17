@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import FeuFollet from "@/components/FeuFollet";
 import BullesSavon from "@/components/BullesSavon";
+import AgendaListe from "@/components/AgendaListe";
+import ConfettisAuSurvol from "@/components/ConfettisAuSurvol";
 
 import paperTexture from "@/assets/paper-texture-2.webp";
 import accueilBg from "@/assets/accueil.webp";
@@ -12,8 +14,9 @@ import parcoursBoussole from "@/assets/parcours-boussole.webp";
 import troisDisciplines from "@/assets/trois-disciplines.webp";
 import contactImg from "@/assets/contact.webp";
 import agendaCiel from "@/assets/agenda-ciel.webp";
-import { univers } from "@/data/univers";
+import { universVisibles as univers } from "@/data/univers";
 import { useAgenda, separerAgenda } from "@/data/agenda";
+import { usePageSeo, PAGES_FIXES } from "@/lib/seo";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -23,6 +26,7 @@ const fadeUp = {
 };
 
 const Index = () => {
+  usePageSeo(PAGES_FIXES.find((p) => p.chemin === "/")!);
   const { evenements } = useAgenda();
   const { aVenir, passees } = separerAgenda(evenements);
 
@@ -49,34 +53,42 @@ const Index = () => {
       <main className="font-body text-foreground">
         {/* ── 1. ACCUEIL ── */}
         <section id="accueil" className="relative h-screen min-h-[600px] w-full overflow-hidden">
-          <img src={accueilBg} alt="Forêt ensoleillée avec un ours" className="absolute inset-0 w-full h-full object-cover" />
+          {/* Sur téléphone (écran en hauteur), on cadre sur les anges à gauche ; sur ordinateur, image entière */}
+          <img src={accueilBg} alt="Forêt ensoleillée avec un ours" className="absolute inset-0 w-full h-full object-cover object-[10%_center] md:object-center" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/55" />
           <FeuFollet />
-          <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-sm md:text-base uppercase tracking-[0.3em] text-white/90 mb-4 drop-shadow-[0_1px_8px_rgba(0,0,0,0.6)]"
-            >
-              <Link to="/univers/actrice-conteuse" className="hover:text-primary transition-colors">Actrice-conteuse</Link>
-              <span className="mx-2">·</span>
-              <Link to="/univers/interprete-nature" className="hover:text-primary transition-colors">Interprète Nature</Link>
-              <span className="mx-2">·</span>
-              <Link to="/univers/plasticienne" className="hover:text-primary transition-colors">Plasticienne</Link>
-            </motion.p>
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="font-lostar text-7xl md:text-8xl lg:text-9xl tracking-[0.04em] leading-none text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.55)]"
-            >
-              <a href="/#contact" className="hover:text-primary transition-colors">
-                <span>Zia</span>
-                <span className="mx-2 md:mx-4"></span>
-                <span>Marsiat</span>
-              </a>
-            </motion.h1>
+          <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
+            {/* Le nom et, juste en dessous, « Actrice-conteuse » étiré sur la même largeur que le nom */}
+            <div className="inline-flex flex-col items-stretch">
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                className="font-lostar text-[13.5vw] sm:text-8xl md:text-9xl lg:text-[11rem] leading-none text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.55)]"
+              >
+                {/* Au survol : le nom devient doré et une salve de confettis jaillit */}
+                <ConfettisAuSurvol>
+                  <a href="/#contact" className="texte-dore whitespace-nowrap">
+                    <span>Zia</span>
+                    <span className="mx-2 md:mx-4"></span>
+                    <span>Marsiat</span>
+                  </a>
+                </ConfettisAuSurvol>
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="mt-3 md:mt-5 text-sm md:text-lg lg:text-xl uppercase text-white/90 drop-shadow-[0_1px_8px_rgba(0,0,0,0.6)]"
+              >
+                {/* Chaque lettre est un petit bloc : réparties entre les deux bords, elles occupent toute la largeur du nom */}
+                <Link to="/univers/actrice-conteuse" className="flex justify-between hover:text-primary transition-colors">
+                  {"Actrice-conteuse".split("").map((lettre, i) => (
+                    <span key={i}>{lettre}</span>
+                  ))}
+                </Link>
+              </motion.p>
+            </div>
           </div>
         </section>
 
@@ -84,7 +96,10 @@ const Index = () => {
         <div
           style={{ backgroundImage: `url(${paperTexture})`, backgroundRepeat: "repeat", backgroundSize: "600px auto" }}
         >
-          {/* ── 2. QUI SUIS-JE ── */}
+          {/* ── 2. QUI SUIS-JE ──
+              Section mise en réserve : elle n'apparaît plus sur le site.
+              Pour la réafficher, remplacer « false » par « true » ci-dessous. */}
+          {false && (
           <section id="qui-suis-je">
             <motion.img
               {...fadeUp}
@@ -105,6 +120,7 @@ const Index = () => {
               </div>
             </div>
           </section>
+          )}
 
           {/* ── 3. AGENDA ── */}
           <section
@@ -113,46 +129,20 @@ const Index = () => {
             style={{ backgroundImage: `url(${agendaCiel})` }}
           >
             <div className="max-w-3xl mx-auto">
-              <motion.h2 {...fadeUp} className="font-heading text-4xl md:text-5xl text-center mb-12 drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
-                <em className="text-white">Agenda</em>
+              {/* Titre étiré sur deux tiers de la largeur, centré : chaque lettre est répartie entre les deux bords */}
+              <motion.h2 {...fadeUp} className="font-heading text-6xl md:text-8xl mb-12 drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
+                <em className="relative left-1/2 -translate-x-1/2 flex justify-between w-[66vw] text-white">
+                  {"Agenda".split("").map((lettre, i) => (
+                    <span key={i}>{lettre}</span>
+                  ))}
+                </em>
               </motion.h2>
-              <motion.div {...fadeUp} className="overflow-x-auto border border-border rounded-xl bg-background shadow-lg">
-                <table className="w-full border-collapse text-left">
-                  <thead>
-                    <tr className="border-b border-border bg-muted/40">
-                      <th className="font-heading text-base text-primary font-bold px-5 py-4 whitespace-nowrap">Quand ?</th>
-                      <th className="font-heading text-base text-primary font-bold px-5 py-4">Quoi ?</th>
-                      <th className="font-heading text-base text-primary font-bold px-5 py-4">Où ?</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {aVenir.length === 0 && (
-                      <tr>
-                        <td colSpan={3} className="px-5 py-8 text-center text-muted-foreground italic">
-                          Aucune date à venir pour le moment. Revenez bientôt !
-                        </td>
-                      </tr>
-                    )}
-                    {aVenir.map((e, i) => (
-                      <tr key={i} className="border-b border-border last:border-0 hover:bg-muted/30 transition-colors">
-                        <td className="px-5 py-4 align-top whitespace-nowrap">{e.date}</td>
-                        <td className="px-5 py-4 align-top font-medium">{e.titre}</td>
-                        <td className="px-5 py-4 align-top">
-                          {e.lien ? (
-                            <a href={e.lien} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-2 hover:text-primary/70 transition-colors">
-                              {e.lieu}
-                            </a>
-                          ) : (
-                            <span className="text-foreground">{e.lieu}</span>
-                          )}
-                          {e.ville && (
-                            <span className="text-foreground">{e.lieu ? ", " : ""}{e.ville}</span>
-                          )}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+              <motion.div {...fadeUp}>
+                <AgendaListe
+                  evenements={aVenir}
+                  messageVide="Aucune date à venir pour le moment. Revenez bientôt !"
+                  className="shadow-lg"
+                />
               </motion.div>
 
               {passees.length > 0 && (
@@ -168,9 +158,20 @@ const Index = () => {
             </div>
           </section>
 
-          {/* ── 4·5·6. LES TROIS UNIVERS (une seule image en fond) ── */}
-          <div className="relative w-full">
-            <img src={troisDisciplines} alt="Une pie en vol, une tortue de mer et des pivoines rouges" className="block w-full h-auto" />
+          {/* ── 4. LES UNIVERS (une seule image en fond) ──
+              S'il n'y a qu'un seul univers visible : sur ordinateur, on ne montre
+              que le haut de l'image (la pie dans le ciel) pour éviter un bloc trop
+              haut ; sur téléphone, l'image en hauteur s'affiche entière. */}
+          <div className={`relative w-full ${univers.length === 1 ? "md:h-[70vh] md:min-h-[420px] md:overflow-hidden" : ""}`}>
+            <img
+              src={troisDisciplines}
+              alt="Une pie en vol, une tortue de mer et des pivoines rouges"
+              className={
+                univers.length === 1
+                  ? "block w-full h-auto md:absolute md:inset-0 md:h-full md:object-cover md:object-[center_12%]"
+                  : "block w-full h-auto"
+              }
+            />
             <div className="absolute inset-0 flex flex-col">
               {univers.map((u) => (
                 <Link
@@ -179,7 +180,7 @@ const Index = () => {
                   to={`/univers/${u.id}`}
                   className="group relative flex-1 flex items-center justify-center text-center px-6"
                 >
-                  <h2 className="relative font-heading text-4xl md:text-6xl font-bold text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.7)] transition-transform duration-300 group-hover:scale-110">
+                  <h2 className="texte-dore relative font-heading text-6xl md:text-8xl font-bold text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.7)] transition-transform duration-300 group-hover:scale-110">
                     {u.title}
                   </h2>
                 </Link>
@@ -189,16 +190,26 @@ const Index = () => {
             <BullesSavon />
           </div>
 
-          {/* ── 7. PARCOURS ── */}
-          <section id="parcours" className="relative min-h-[60vh] md:min-h-[70vh] flex items-center py-20 px-6 overflow-hidden">
+          {/* ── 5. IMAGE « CURIEUSE » (reprise de l'ancienne section Qui suis-je) ── */}
+          <motion.img
+            {...fadeUp}
+            src={collageCurieuse}
+            alt="Zia entourée d'un écureuil, d'oiseaux, d'un crayon et d'un violoncelle"
+            className="w-full h-auto md:h-[80vh] md:object-cover"
+          />
+
+          {/* ── 7. PARCOURS ──
+              Sur téléphone : l'image entière, puis le titre et le bouton en dessous.
+              Sur ordinateur : l'image en fond, le texte posé dessus à droite. */}
+          <section id="parcours" className="relative md:min-h-[70vh] md:flex md:items-center md:py-20 md:px-6 overflow-hidden">
             <img
               src={parcoursBoussole}
               alt="Une main tenant une boussole devant un paysage de montagnes"
-              className="absolute inset-0 w-full h-full object-cover"
+              className="block w-full h-auto md:absolute md:inset-0 md:h-full md:object-cover"
             />
 
-            <div className="relative z-10 ml-auto max-w-md text-center">
-              <motion.h2 {...fadeUp} className="font-heading text-4xl md:text-5xl mb-10 text-white [text-shadow:0_2px_10px_rgba(0,0,0,0.95),0_0_4px_rgba(0,0,0,0.8)]">
+            <div className="relative z-10 px-6 py-14 text-center md:p-0 md:ml-auto md:max-w-md">
+              <motion.h2 {...fadeUp} className="font-heading text-4xl md:text-5xl mb-8 md:mb-10 text-foreground md:text-white md:[text-shadow:0_2px_10px_rgba(0,0,0,0.95),0_0_4px_rgba(0,0,0,0.8)]">
                 Un chemin de <em className="text-primary">curiosité</em>
               </motion.h2>
 
@@ -262,6 +273,9 @@ const Index = () => {
           </section>
 
           <footer className="py-8 px-6 text-center border-t border-border">
+            <p className="text-base md:text-lg text-foreground mb-2">
+              Zia Marsiat · Conteuse, musicienne et plasticienne · Liège, Belgique
+            </p>
             <p className="text-base md:text-lg text-muted-foreground">
               Photo : Tiffany's Story -{" "}
               <a href="https://objectiffb.be/" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground transition-colors">

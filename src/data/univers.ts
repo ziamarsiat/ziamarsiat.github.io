@@ -25,11 +25,15 @@ import cabane3 from "@/assets/cabane-3.webp";
 //  - text     : le texte de présentation
 //  - items    : liste à puces (ex. les spectacles) — [] si vide
 //  - gallery  : photos supplémentaires sur la page de détail — [] si vide
+//  - visible  : false = l'univers est gardé en réserve (sauvegardé ici)
+//               mais n'apparaît nulle part sur le site. Remettre true
+//               pour le réafficher.
 // ─────────────────────────────────────────────────────────────
 export const univers = [
   {
     id: "actrice-conteuse",
-    title: "Actrice-conteuse",
+    title: "Spectacles",
+    visible: true,
     image: fleurRecitsMusique,
     alt: "Pivoine rouge",
     position: "center",
@@ -98,6 +102,7 @@ export const univers = [
   {
     id: "interprete-nature",
     title: "Interprète Nature",
+    visible: false, // gardé en réserve — pas affiché sur le site pour le moment
     image: fleurSciences,
     alt: "Fleur corail",
     position: "center",
@@ -113,6 +118,7 @@ export const univers = [
   {
     id: "plasticienne",
     title: "Plasticienne",
+    visible: false, // gardé en réserve — pas affiché sur le site pour le moment
     image: fleurArtPlastique,
     alt: "Pivoine rose",
     position: "center",
@@ -126,3 +132,6 @@ export const univers = [
     gallery: [],
   },
 ];
+
+// Seuls les univers « visible: true » sont présentés sur le site.
+export const universVisibles = univers.filter((u) => u.visible);

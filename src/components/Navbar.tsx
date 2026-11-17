@@ -5,11 +5,13 @@ import papillon from "@/assets/papillon.webp";
 
 const links = [
   { label: "Accueil", href: "/#accueil" },
-  { label: "Qui suis-je", href: "/#qui-suis-je" },
+  // Section mise en réserve (voir src/pages/Index.tsx) :
+  // { label: "Qui suis-je", href: "/#qui-suis-je" },
   { label: "Agenda", href: "/#agenda" },
-  { label: "Actrice-conteuse", href: "/univers/actrice-conteuse" },
-  { label: "Interprète Nature", href: "/univers/interprete-nature" },
-  { label: "Plasticienne", href: "/univers/plasticienne" },
+  { label: "Spectacles", href: "/univers/actrice-conteuse" },
+  // Univers gardés en réserve (voir src/data/univers.ts) :
+  // { label: "Interprète Nature", href: "/univers/interprete-nature" },
+  // { label: "Plasticienne", href: "/univers/plasticienne" },
   { label: "Parcours", href: "/#parcours" },
   { label: "Contact", href: "/#contact" },
 ];

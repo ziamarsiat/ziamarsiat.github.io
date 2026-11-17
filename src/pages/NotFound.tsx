@@ -1,7 +1,9 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { usePageSeo } from "@/lib/seo";
 
 const NotFound = () => {
+  usePageSeo({ titre: "Page introuvable", description: "Cette page n’existe pas.", noindex: true });
   const location = useLocation();
 
   useEffect(() => {

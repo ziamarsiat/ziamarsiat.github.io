@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Mail, Phone } from "lucide-react";
+import { usePageSeo, PAGES_FIXES } from "@/lib/seo";
 
 const Contact = () => {
+  usePageSeo(PAGES_FIXES.find((p) => p.chemin === "/contact")!);
   return (
     <main className="min-h-screen bg-background font-body">
       <div className="max-w-4xl mx-auto px-6 py-16">

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowLeft, BookOpen } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import { usePageSeo, PAGES_FIXES } from "@/lib/seo";
 
 const steps = [
   {
@@ -48,6 +49,7 @@ const steps = [
 ];
 
 const Biographie = () => {
+  usePageSeo(PAGES_FIXES.find((p) => p.chemin === "/biographie")!);
   // Toujours afficher la page depuis le haut
   useEffect(() => {
     window.scrollTo(0, 0);

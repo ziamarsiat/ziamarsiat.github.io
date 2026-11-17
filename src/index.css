@@ -85,3 +85,34 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+/* ─────────────────────────────────────────────────────────────
+   TEXTE DORÉ BRILLANT AU SURVOL
+   Quand la souris passe sur le texte lui-même, il devient
+   doré avec un reflet lumineux qui glisse en continu.
+   ───────────────────────────────────────────────────────────── */
+@keyframes reflet-dore {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+.texte-dore:hover {
+  color: transparent;
+  background-image: linear-gradient(
+    100deg,
+    #b8862b 0%,
+    #f3cf6a 20%,
+    #fff6cf 38%,
+    #f3cf6a 52%,
+    #b8862b 70%,
+    #f3cf6a 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: reflet-dore 1.8s linear infinite;
+}
