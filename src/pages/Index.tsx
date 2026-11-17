@@ -199,17 +199,18 @@ const Index = () => {
           />
 
           {/* ── 7. PARCOURS ──
-              Sur téléphone : l'image entière, puis le titre et le bouton en dessous.
-              Sur ordinateur : l'image en fond, le texte posé dessus à droite. */}
-          <section id="parcours" className="relative md:min-h-[70vh] md:flex md:items-center md:py-20 md:px-6 overflow-hidden">
+              L'image de la boussole en fond, le texte posé dessus.
+              Sur téléphone : image recadrée sur la main, texte en haut dans le ciel.
+              Sur ordinateur : texte à droite, au milieu. */}
+          <section id="parcours" className="relative min-h-[75vh] md:min-h-[70vh] flex items-start md:items-center pt-16 pb-10 md:py-20 px-6 overflow-hidden">
             <img
               src={parcoursBoussole}
               alt="Une main tenant une boussole devant un paysage de montagnes"
-              className="block w-full h-auto md:absolute md:inset-0 md:h-full md:object-cover"
+              className="absolute inset-0 w-full h-full object-cover"
             />
 
-            <div className="relative z-10 px-6 py-14 text-center md:p-0 md:ml-auto md:max-w-md">
-              <motion.h2 {...fadeUp} className="font-heading text-4xl md:text-5xl mb-8 md:mb-10 text-foreground md:text-white md:[text-shadow:0_2px_10px_rgba(0,0,0,0.95),0_0_4px_rgba(0,0,0,0.8)]">
+            <div className="relative z-10 w-full text-center md:w-auto md:ml-auto md:max-w-md">
+              <motion.h2 {...fadeUp} className="font-heading text-4xl md:text-5xl mb-8 md:mb-10 text-white [text-shadow:0_2px_10px_rgba(0,0,0,0.95),0_0_4px_rgba(0,0,0,0.8)]">
                 Un chemin de <em className="text-primary">curiosité</em>
               </motion.h2>
 
@@ -226,14 +227,35 @@ const Index = () => {
 
           {/* ── 8. CONTACT ── */}
           <section id="contact" className="relative w-full overflow-hidden">
+            {/* Téléphone : titre et coordonnées en grand, dans un bandeau AU-DESSUS de la photo
+                (pour ne pas écrire sur le rouge-gorge). Caché sur ordinateur et tablette. */}
+            <div className="md:hidden px-6 pt-20 pb-12 flex flex-col items-center text-center text-foreground">
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="font-heading text-5xl font-bold mb-8"
+              >
+                Contact
+              </motion.h2>
+              <a href="mailto:ziamarsiat@gmail.com" className="text-2xl hover:underline mb-4">
+                ziamarsiat@gmail.com
+              </a>
+              <a href="tel:+32484784274" className="text-2xl hover:underline mb-4">
+                0032 484 78 42 74
+              </a>
+              <p className="text-xl text-muted-foreground">46 rue Ansiaux, 4020 Liège</p>
+            </div>
+
             <img
               src={contactImg}
               alt="Une mésange apporte le courrier à une boîte aux lettres"
               className="block w-full h-auto"
             />
-            {/* Voile sombre en haut pour la lisibilité du texte */}
-            <div className="absolute inset-x-0 top-0 h-2/3 bg-gradient-to-b from-black/60 via-black/25 to-transparent" />
-            <div className="absolute inset-x-0 top-0 pt-16 md:pt-24 px-6 flex flex-col items-center text-center text-white">
+            {/* Ordinateur et tablette : voile sombre en haut pour la lisibilité du texte posé sur la photo */}
+            <div className="hidden md:block absolute inset-x-0 top-0 h-2/3 bg-gradient-to-b from-black/60 via-black/25 to-transparent" />
+            <div className="hidden md:flex absolute inset-x-0 top-0 pt-16 md:pt-24 px-6 flex-col items-center text-center text-white">
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}

@@ -4,15 +4,12 @@ import { motion } from "framer-motion";
 // ─────────────────────────────────────────────────────────────
 //  CONFETTIS AU SURVOL
 //  Entoure un élément : quand la souris arrive dessus, une salve
-//  de confettis ronds et colorés jaillit vers le haut, accompagnée
-//  de paillettes scintillantes, puis tout retombe et s'efface.
-//  - nombre : combien de confettis par salve
+//  de confettis colorés jaillit vers le haut, puis retombe en
+//  tournoyant avant de s'effacer.
+//  - nombre   : combien de confettis par salve
+//  - couleurs : les couleurs possibles
 // ─────────────────────────────────────────────────────────────
-
-// Couleurs vives des confettis ronds
-const couleurs = ["#ff2d55", "#ff8a00", "#ffd600", "#2ee36b", "#00c8ff", "#b23cff", "#ff3cc7", "#ffffff"];
-// Couleurs des paillettes (petits éclats scintillants)
-const couleursPaillettes = ["#fff6b0", "#ffffff", "#ffe066"];
+const couleurs = ["#f3cf6a", "#ffd166", "#e8656f", "#6fc3df", "#a7d96c", "#ff9ecb", "#ffffff", "#b78bff"];
 
 type Confetti = {
   id: number;
@@ -21,31 +18,29 @@ type Confetti = {
   chute: number; // distance de chute après le sommet (px)
   rotation: number; // rotation totale (degrés)
   couleur: string;
-  taille: number; // diamètre (px)
-  paillette: boolean; // petit éclat scintillant au lieu d'un confetti
+  largeur: number;
+  hauteurPiece: number;
+  rond: boolean;
   duree: number; // durée de vie (s)
   delai: number; // léger décalage de départ (s)
 };
 
 const alea = (min: number, max: number) => min + Math.random() * (max - min);
-const auHasard = <T,>(liste: T[]) => liste[Math.floor(Math.random() * liste.length)];
 
 const nouvelleSalve = (nombre: number, depart: number): Confetti[] =>
-  Array.from({ length: nombre }, (_, i) => {
-    const paillette = Math.random() < 0.35;
-    return {
-      id: depart + i,
-      dx: alea(-460, 460),
-      hauteur: alea(120, 340),
-      chute: alea(260, 480),
-      rotation: alea(-720, 720),
-      paillette,
-      couleur: paillette ? auHasard(couleursPaillettes) : auHasard(couleurs),
-      taille: paillette ? alea(3, 6) : alea(9, 15),
-      duree: alea(1.6, 2.4),
-      delai: alea(0, 0.12),
-    };
-  });
+  Array.from({ length: nombre }, (_, i) => ({
+    id: depart + i,
+    dx: alea(-460, 460),
+    hauteur: alea(120, 340),
+    chute: alea(260, 480),
+    rotation: alea(-720, 720),
+    couleur: couleurs[Math.floor(Math.random() * couleurs.length)],
+    largeur: alea(7, 13),
+    hauteurPiece: alea(12, 22),
+    rond: Math.random() < 0.25,
+    duree: alea(1.6, 2.4),
+    delai: alea(0, 0.12),
+  }));
 
 type Props = {
   children: ReactNode;
@@ -53,7 +48,7 @@ type Props = {
   className?: string;
 };
 
-const ConfettisAuSurvol = ({ children, nombre = 70, className = "" }: Props) => {
+const ConfettisAuSurvol = ({ children, nombre = 60, className = "" }: Props) => {
   const [confettis, setConfettis] = useState<Confetti[]>([]);
 
   const lancer = () => {
@@ -73,17 +68,13 @@ const ConfettisAuSurvol = ({ children, nombre = 70, className = "" }: Props) => 
         {confettis.map((c) => (
           <motion.span
             key={c.id}
-            className="absolute block rounded-full"
+            className="absolute block"
             style={{
-              width: c.taille,
-              height: c.taille,
-              // Confetti rond avec un reflet, ou paillette lumineuse
-              background: c.paillette
-                ? c.couleur
-                : `radial-gradient(circle at 32% 30%, rgba(255,255,255,0.95) 0%, ${c.couleur} 45%, ${c.couleur} 100%)`,
-              boxShadow: c.paillette
-                ? `0 0 6px 2px ${c.couleur}, 0 0 12px 4px rgba(255,230,120,0.6)`
-                : "0 0 4px rgba(0,0,0,0.25)",
+              width: c.largeur,
+              height: c.rond ? c.largeur : c.hauteurPiece,
+              backgroundColor: c.couleur,
+              borderRadius: c.rond ? "9999px" : "2px",
+              boxShadow: "0 0 4px rgba(0,0,0,0.25)",
             }}
             initial={{ x: 0, y: 0, opacity: 1, rotate: 0, scale: 0.6 }}
             animate={{
@@ -99,16 +90,7 @@ const ConfettisAuSurvol = ({ children, nombre = 70, className = "" }: Props) => 
               times: [0, 0.4, 1],
               ease: ["easeOut", "easeIn"],
             }}
-          >
-            {/* Scintillement des paillettes : la lumière pulse pendant le vol */}
-            {c.paillette && (
-              <motion.span
-                className="absolute inset-0 rounded-full bg-white"
-                animate={{ opacity: [0.2, 1, 0.2], scale: [0.8, 1.6, 0.8] }}
-                transition={{ duration: 0.35, repeat: Infinity, ease: "easeInOut" }}
-              />
-            )}
-          </motion.span>
+          />
         ))}
       </span>
     </span>
