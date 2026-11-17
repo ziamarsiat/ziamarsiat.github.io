@@ -57,10 +57,12 @@ function html(page) {
   return h;
 }
 
+// Chaque adresse devient un fichier « adresse.html » (ex. /biographie -> biographie.html) :
+// GitHub Pages le sert directement, sans redirection.
 for (const page of pages) {
-  const dossier = page.chemin === "/" ? dist : path.join(dist, page.chemin);
-  mkdirSync(dossier, { recursive: true });
-  writeFileSync(path.join(dossier, "index.html"), html(page));
+  const fichier = page.chemin === "/" ? path.join(dist, "index.html") : path.join(dist, page.chemin + ".html");
+  mkdirSync(path.dirname(fichier), { recursive: true });
+  writeFileSync(fichier, html(page));
 }
 
 // Page pour les adresses inconnues (GitHub Pages l'affiche automatiquement).
