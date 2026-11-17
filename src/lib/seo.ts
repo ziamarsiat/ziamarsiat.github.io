@@ -11,7 +11,7 @@ import { useEffect } from "react";
 // ─────────────────────────────────────────────────────────────
 
 /** Adresse publique du site (sans « / » à la fin). À changer si un nom de domaine est acheté. */
-export const SITE_URL = "https://ziamarsiat.github.io";
+export const SITE_URL = "https://ziamarsiat.cjemine.xyz";
 
 export const NOM = "Zia Marsiat";
 

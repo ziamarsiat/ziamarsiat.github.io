@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ziamarsiat.github.io/sitemap.xml
+Sitemap: https://ziamarsiat.cjemine.xyz/sitemap.xml

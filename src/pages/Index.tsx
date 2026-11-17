@@ -273,10 +273,10 @@ const Index = () => {
           </section>
 
           <footer className="py-8 px-6 text-center border-t border-border">
-            <p className="text-base md:text-lg text-foreground mb-2">
-              Zia Marsiat · Conteuse, musicienne et plasticienne · Liège, Belgique
+            <p className="text-xs md:text-sm text-muted-foreground mb-2">
+              Zia Marsiat · Conteuse, musicienne
             </p>
-            <p className="text-base md:text-lg text-muted-foreground">
+            <p className="text-xs md:text-sm text-muted-foreground">
               Photo : Tiffany's Story -{" "}
               <a href="https://objectiffb.be/" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground transition-colors">
                 objectiffb.be
